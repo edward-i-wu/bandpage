@@ -4,7 +4,7 @@
 $black: #000000; 
 $dgrey: #272727;
 $grey: #A0A0A0; 
-$lgrey: rgb(243, 219, 219); 
+$lgrey: #D7D7D7;
 $offwhite: #F9F9F9;
 $white:#FFFFFF; 
 
@@ -23,9 +23,14 @@ $white:#FFFFFF;
 
 
 body{
+    display:flex;
+    flex-direction: column;
     margin:0;
     font-family:'Poppins';
 }
+
+
+
 .mainImg{ 
     background-image: url(../Images/ana-grave-156852-unsplash.jpg);
     background-repeat: no-repeat;
@@ -126,6 +131,7 @@ a{
 
 .music{
     @include sectionFormatting;
+    background-color:$offwhite;
     .margin{
         @include flexColumnAndMargin();
     }
@@ -169,7 +175,7 @@ a{
 
 .gallery{
     @include sectionFormatting;
-   
+    height:auto; 
     .margin{
         @include flexColumnAndMargin;
     }
@@ -181,14 +187,17 @@ a{
         align-items: baseline;
     }
     &__imgContainer{
-        height: 33vh;
-        width: 23vw;
+        max-height: 33vh;
+        height:26vh;
+        max-width: 18vw;
         overflow:hidden;
     }
 
     &__image{
-        width:39vw;
-        height:auto;
+        width:100%;
+        height:100%;
+        margin: 0 0 1em 0;
+        object-fit: cover;
     }
     &__image:hover{
         filter:grayscale(0);
@@ -196,10 +205,72 @@ a{
 
 
 }
-
-//!!!
-@media (max-width:660px){
-    body{
-        font-size: 15px;
-    }
+#bryan{ 
+    //width:96%; 
 }
+
+.contact{
+    @include sectionFormatting;
+    background-color:$dgrey;
+    
+    .margin{
+        @include flexColumnAndMargin;
+
+        
+    }
+    &__title{
+        color:$white;
+    }
+    &__article{
+        display:flex;
+        color: $white;
+        font-size:1.125rem;
+        .firstLine{
+            font-weight:bold;
+        }
+    }
+    &__management{
+        margin-right: 8em;
+    }
+    &__agentUS{
+        margin-right: 8em;
+    }
+    &__agentUK{
+
+    }
+    
+    &__icons{
+        display:flex;
+        margin-top: 2.8em;
+        &--insta{
+            margin-right: 5em;
+        }
+        &--facebook{
+            margin-right: 5em;
+        }
+        &--twitter{
+
+        }
+
+    }
+
+    &__copyright{
+        font-weight:thin;
+        font-size: .625rem;
+        color:$white; 
+        margin-top: 13em;
+    }
+
+}
+
+//changes all section titles 
+h2{
+    font-weight:bolder;
+    font-size: 3.5rem;
+    line-height:.5em;
+}
+section{
+    height:auto;
+    width:100vw;
+}
+//!!!
