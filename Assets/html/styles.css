@@ -1,0 +1,276 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+body {
+  margin: 0;
+  font-family: 'Poppins';
+}
+
+.mainImg {
+  background-image: url(../Images/ana-grave-156852-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-origin: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: auto;
+  height: 100vh;
+}
+
+.mainImg .margin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+}
+
+a {
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.mainImg__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mainImg__links .mainImg__link {
+  font-weight: bold;
+  color: #FFFFFF;
+  font-size: 1.125rem;
+  margin-top: 1.5rem;
+}
+
+.mainImg__links .mainImg__link--rightSide {
+  margin-left: auto;
+}
+
+.mainImg__links .mainImg__link--rightEdge {
+  margin-left: 5rem;
+}
+
+.central {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.central__date {
+  font-size: 5.25rem;
+  font-weight: bolder;
+  color: #FFFFFF;
+}
+
+.central__title {
+  font-size: 2.25rem;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.central__button {
+  border-radius: 5%;
+  background-color: #A0A0A0;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  font-family: "Poppins";
+  font-size: 1.125rem;
+  margin: 2.5rem;
+  padding: .6em 2em;
+  letter-spacing: 1px;
+}
+
+.about {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: auto;
+  height: 100vh;
+}
+
+.about .margin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+}
+
+.about__title {
+  font-weight: bolder;
+  font-size: 3.5rem;
+  line-height: .5em;
+}
+
+.about__article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.about__article--leftP {
+  font-weight: bold;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  font-size: 1.2em;
+  margin-right: 2em;
+}
+
+.about__article--rightP {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 2.15;
+  font-size: 1em;
+  -webkit-box-flex: 1.7;
+      -ms-flex-positive: 1.7;
+          flex-grow: 1.7;
+}
+
+.music {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: auto;
+  height: 100vh;
+}
+
+.music .margin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+}
+
+.music__article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.music__article--cover {
+  background-image: url(../Images/bryan-minear-315773-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  height: 45vh;
+  width: 140vw;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  min-width: 240px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.music__article--cover .cover__title {
+  font-size: 1.1vh;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin: 1.5vh 2.8vh;
+}
+
+.music__article--paragraph {
+  -webkit-box-flex: 1.6;
+      -ms-flex-positive: 1.6;
+          flex-grow: 1.6;
+  margin-left: 3em;
+}
+
+.music__article--paragraph .firstLine {
+  margin-top: 0;
+}
+
+.gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: auto;
+  height: 100vh;
+}
+
+.gallery .margin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+}
+
+.gallery__section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.gallery__imgContainer {
+  height: 33vh;
+  width: 23vw;
+  overflow: hidden;
+}
+
+.gallery__image {
+  width: 39vw;
+  height: auto;
+}
+
+.gallery__image:hover {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+}
+
+@media (max-width: 660px) {
+  body {
+    font-size: 15px;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
