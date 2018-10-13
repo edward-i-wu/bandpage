@@ -17,8 +17,8 @@ $white:#FFFFFF;
     display:flex;
     justify-content: center;
     //align-items:center;
-    width:auto;
-    height:100vh;
+    width:100vw;
+    height:auto;
 }
 
 
@@ -29,15 +29,20 @@ body{
     font-family:'Poppins';
 }
 
-
+.divider{
+    color:$lgrey;
+    width:1px; 
+    border:0;
+    margin: 2rem;
+}
 
 .mainImg{ 
     background-image: url(../Images/ana-grave-156852-unsplash.jpg);
     background-repeat: no-repeat;
-    background-size:100% 100%; 
+    background-size: cover; 
     background-origin: border-box;
     @include sectionFormatting;
-    
+    height:100vh;
     .margin{
         @include flexColumnAndMargin;
     }
@@ -91,9 +96,10 @@ a{
         color:$white;
         border: 2px solid $white;
         font-family: "Poppins"; 
+        font-weight:600;
         font-size: 1.125rem;
         margin: 2.5rem;
-        padding: .6em 2em;
+        padding: .833333em 1.25em;
         letter-spacing:1px;
     }
 }
@@ -230,10 +236,10 @@ a{
         }
     }
     &__management{
-        margin-right: 8em;
+        margin-right: 7em;
     }
     &__agentUS{
-        margin-right: 8em;
+        margin-right: 7em;
     }
     &__agentUK{
 
@@ -274,3 +280,5 @@ section{
     width:100vw;
 }
 //!!!
+
+@media 

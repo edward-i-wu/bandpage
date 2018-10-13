@@ -11,10 +11,17 @@ body {
   font-family: 'Poppins';
 }
 
+.divider {
+  color: #D7D7D7;
+  width: 1px;
+  border: 0;
+  margin: 2rem;
+}
+
 .mainImg {
   background-image: url(../Images/ana-grave-156852-unsplash.jpg);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
   background-origin: border-box;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -22,7 +29,8 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: auto;
+  width: 100vw;
+  height: auto;
   height: 100vh;
 }
 
@@ -95,9 +103,10 @@ a {
   color: #FFFFFF;
   border: 2px solid #FFFFFF;
   font-family: "Poppins";
+  font-weight: 600;
   font-size: 1.125rem;
   margin: 2.5rem;
-  padding: .6em 2em;
+  padding: .833333em 1.25em;
   letter-spacing: 1px;
 }
 
@@ -108,8 +117,8 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: auto;
-  height: 100vh;
+  width: 100vw;
+  height: auto;
 }
 
 .about .margin {
@@ -162,8 +171,8 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: auto;
-  height: 100vh;
+  width: 100vw;
+  height: auto;
   background-color: #F9F9F9;
 }
 
@@ -231,8 +240,8 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: auto;
-  height: 100vh;
+  width: 100vw;
+  height: auto;
   height: auto;
 }
 
@@ -288,8 +297,8 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: auto;
-  height: 100vh;
+  width: 100vw;
+  height: auto;
   background-color: #272727;
 }
 
@@ -321,11 +330,11 @@ a {
 }
 
 .contact__management {
-  margin-right: 8em;
+  margin-right: 7em;
 }
 
 .contact__agentUS {
-  margin-right: 8em;
+  margin-right: 7em;
 }
 
 .contact__icons {
