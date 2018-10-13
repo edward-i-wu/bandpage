@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Poppins);
+
 
 // make variables for each color 
 $black: #000000; 
@@ -50,6 +50,8 @@ body{
     background-repeat: no-repeat;
     background-size: cover; 
     background-origin: border-box;
+    background-position-x: center;
+    background-position-y: center;
     @include sectionFormatting;
     height:100vh;
 
@@ -217,10 +219,15 @@ a{
     }
     &__article{
         display:flex;
+        flex-wrap:wrap;
         color: $white;
         font-size:1.125rem;
         .firstLine{
             font-weight:bold;
+        }
+        div{
+            margin-top: 1em;
+            margin-bottom: 1em;
         }
     }
     &__management{
@@ -266,4 +273,16 @@ h2{
 
 //!!!
 
-//@media screen ()
+@media only screen and (max-width:1200px){
+    html{
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width:1080px){
+    .gallery__imgContainer{
+            max-width: 26vw;
+        
+    }
+
+}
