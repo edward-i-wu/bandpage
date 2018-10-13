@@ -11,6 +11,22 @@ body {
   font-family: 'Poppins';
 }
 
+.margin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+}
+
+.marginContent {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
 .divider {
   color: #D7D7D7;
   width: 1px;
@@ -32,17 +48,6 @@ body {
   width: 100vw;
   height: auto;
   height: 100vh;
-}
-
-.mainImg .margin {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 80%;
 }
 
 a {
@@ -121,23 +126,6 @@ a {
   height: auto;
 }
 
-.about .margin {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 80%;
-}
-
-.about__title {
-  font-weight: bolder;
-  font-size: 3.5rem;
-  line-height: .5em;
-}
-
 .about__article {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -174,17 +162,6 @@ a {
   width: 100vw;
   height: auto;
   background-color: #F9F9F9;
-}
-
-.music .margin {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 80%;
 }
 
 .music__article {
@@ -245,17 +222,6 @@ a {
   height: auto;
 }
 
-.gallery .margin {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 80%;
-}
-
 .gallery__section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -300,17 +266,6 @@ a {
   width: 100vw;
   height: auto;
   background-color: #272727;
-}
-
-.contact .margin {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  width: 80%;
 }
 
 .contact__title {
@@ -362,11 +317,6 @@ a {
 h2 {
   font-weight: bolder;
   font-size: 3.5rem;
-  line-height: .5em;
-}
-
-section {
-  height: auto;
-  width: 100vw;
+  line-height: 1.5em;
 }
 /*# sourceMappingURL=styles.css.map */

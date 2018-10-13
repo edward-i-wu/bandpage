@@ -29,6 +29,15 @@ body{
     font-family:'Poppins';
 }
 
+.margin{
+    @include flexColumnAndMargin;  
+}
+
+.marginContent{
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
 .divider{
     color:$lgrey;
     width:1px; 
@@ -43,9 +52,6 @@ body{
     background-origin: border-box;
     @include sectionFormatting;
     height:100vh;
-    .margin{
-        @include flexColumnAndMargin;
-    }
 
 }
 a{
@@ -107,14 +113,6 @@ a{
 
 .about{
    @include sectionFormatting;
-    .margin{
-        @include flexColumnAndMargin;
-    }
-    &__title{
-        font-weight:bolder;
-        font-size: 3.5rem;
-        line-height:.5em;
-    }
     &__article{
         display:flex; 
         
@@ -138,9 +136,7 @@ a{
 .music{
     @include sectionFormatting;
     background-color:$offwhite;
-    .margin{
-        @include flexColumnAndMargin();
-    }
+ 
     &__title{
 
     }
@@ -182,9 +178,7 @@ a{
 .gallery{
     @include sectionFormatting;
     height:auto; 
-    .margin{
-        @include flexColumnAndMargin;
-    }
+    
 
     &__section{
         display:flex;
@@ -211,19 +205,13 @@ a{
 
 
 }
-#bryan{ 
-    //width:96%; 
-}
+
 
 .contact{
     @include sectionFormatting;
     background-color:$dgrey;
     
-    .margin{
-        @include flexColumnAndMargin;
-
-        
-    }
+    
     &__title{
         color:$white;
     }
@@ -273,12 +261,9 @@ a{
 h2{
     font-weight:bolder;
     font-size: 3.5rem;
-    line-height:.5em;
+    line-height:1.5em;
 }
-section{
-    height:auto;
-    width:100vw;
-}
+
 //!!!
 
-@media 
+//@media screen ()
