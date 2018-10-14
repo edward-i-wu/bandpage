@@ -34,7 +34,7 @@ body {
 }
 
 .mainImg {
-  background-image: url(../Images/ana-grave-156852-unsplash.jpg);
+  background-image: url(../../Images/ana-grave-156852-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-origin: border-box;
@@ -172,7 +172,7 @@ a {
 }
 
 .music__article--cover {
-  background-image: url(../Images/bryan-minear-315773-unsplash.jpg);
+  background-image: url(../../Images/bryan-minear-315773-unsplash.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-origin: border-box;
