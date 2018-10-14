@@ -143,9 +143,6 @@ a {
 }
 
 .about__article--rightP {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   line-height: 2.15;
   font-size: 1em;
   -webkit-box-flex: 1.7;
@@ -337,6 +334,26 @@ h2 {
 @media only screen and (max-width: 1080px) {
   .gallery__imgContainer {
     max-width: 26vw;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  html {
+    font-size: 11.5px;
+  }
+  .gallery__imgContainer {
+    max-width: 38vw;
+  }
+  .music__article {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .music__article--paragraph {
+    margin-top: 2em;
+    margin-left: 0;
+  }
+  .about__article {
+    display: block;
   }
 }
 /*# sourceMappingURL=styles.css.map */

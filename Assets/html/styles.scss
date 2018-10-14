@@ -125,8 +125,6 @@ a{
             margin-right: 2em;
         }
         &--rightP{
-            display:flex; 
-            //!!!
             line-height:2.15;
             font-size:1em;
             flex-grow:1.7;
@@ -145,6 +143,7 @@ a{
     &__article{
         display:flex; 
         align-items:flex-start;
+        
         &--cover{
             background-image: url(../Images/bryan-minear-315773-unsplash.jpg);
             background-size: cover;
@@ -282,7 +281,27 @@ h2{
 @media only screen and (max-width:1080px){
     .gallery__imgContainer{
             max-width: 26vw;
-        
+    }  
+    }
+@media only screen and (max-width:640px){
+    html{
+        font-size:11.5px;
     }
 
+    .gallery__imgContainer{
+        max-width: 38vw;
+    } 
+    
+    .music__article{
+        flex-wrap:wrap;
+    }
+
+    .music__article--paragraph{
+        margin-top:2em;
+        margin-left:0;
+    }
+    .about__article{
+        display:block;
+    }
 }
+
