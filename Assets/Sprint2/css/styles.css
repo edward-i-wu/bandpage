@@ -1,0 +1,491 @@
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0;
+  font-family: 'Poppins';
+}
+
+.margin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+}
+
+.marginContent {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.divider {
+  color: #D7D7D7;
+  width: 1px;
+  border: 0;
+  margin: 2rem;
+}
+
+.mainImg {
+  background-image: url(../../Images/ana-grave-156852-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: border-box;
+  background-position-x: center;
+  background-position-y: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100vw;
+  height: auto;
+  height: 100vh;
+}
+
+a {
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.mainImg__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mainImg__links .mainImg__link {
+  font-weight: bold;
+  color: #FFFFFF;
+  font-size: 1.125rem;
+  margin-top: 1.5rem;
+}
+
+.mainImg__links .mainImg__link--rightSide {
+  margin-left: auto;
+}
+
+.mainImg__links .mainImg__link--rightEdge {
+  margin-left: 5rem;
+}
+
+.central {
+  margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.central__date {
+  font-size: 5.25rem;
+  font-weight: bolder;
+  color: #FFFFFF;
+}
+
+.central__title {
+  font-size: 2.25rem;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+.central__button {
+  border-radius: 5%;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 1.125rem;
+  padding: .833333em 1.25em;
+  letter-spacing: 1px;
+  background-color: #A0A0A0;
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  margin: 2.5rem;
+}
+
+.about {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100vw;
+  height: auto;
+}
+
+.about__article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.about__article--leftP {
+  font-weight: bold;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  font-size: 1.2em;
+  margin-right: 2em;
+}
+
+.about__article--rightP {
+  line-height: 2.15;
+  font-size: 1em;
+  -webkit-box-flex: 1.7;
+      -ms-flex-positive: 1.7;
+          flex-grow: 1.7;
+}
+
+.music {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100vw;
+  height: auto;
+  background-color: #F9F9F9;
+}
+
+.music__article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.music__article--cover {
+  background-image: url(../../Images/bryan-minear-315773-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  height: 45vh;
+  width: 140vw;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  min-width: 240px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.music__article--cover .cover__title {
+  font-size: 1.1vh;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin: 1.5vh 2.8vh;
+}
+
+.music__article--paragraph {
+  -webkit-box-flex: 1.6;
+      -ms-flex-positive: 1.6;
+          flex-grow: 1.6;
+  margin-left: 3em;
+}
+
+.music__article--paragraph .firstLine {
+  margin-top: 0;
+}
+
+.gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100vw;
+  height: auto;
+  height: auto;
+}
+
+.gallery__section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+.gallery__imgContainer {
+  max-height: 33vh;
+  height: 26vh;
+  max-width: 18vw;
+  overflow: hidden;
+}
+
+.gallery__image {
+  width: 100%;
+  height: 100%;
+  margin: 0 0 1em 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.gallery__image:hover {
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+}
+
+.comments {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100vw;
+  height: auto;
+  background-color: #F9F9F9;
+}
+
+.comments__form--nameLabel {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+}
+
+.comments__form--nameInput, .comments__form--commentsInput {
+  resize: none;
+  margin: 1em 0;
+}
+
+.comments__form--commentsInput {
+  margin-top: 1.5em;
+}
+
+.comments__form--inputButton {
+  border-radius: 5%;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 1.125rem;
+  padding: .833333em 1.25em;
+  letter-spacing: 1px;
+  background-color: #000000;
+  color: #FFFFFF;
+  border: 2px solid #000000;
+}
+
+.contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100vw;
+  height: auto;
+  background-color: #272727;
+}
+
+.contact__title {
+  color: #FFFFFF;
+}
+
+.contact__article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  color: #FFFFFF;
+  font-size: 1.125rem;
+}
+
+.contact__article .firstLine {
+  font-weight: bold;
+}
+
+.contact__article div {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.contact__management {
+  margin-right: 7em;
+}
+
+.contact__agentUS {
+  margin-right: 7em;
+}
+
+.contact__icons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 2.8em;
+}
+
+.contact__icons--insta {
+  margin-right: 5em;
+}
+
+.contact__icons--facebook {
+  margin-right: 5em;
+}
+
+.contact__copyright {
+  font-weight: thin;
+  font-size: .625rem;
+  color: #FFFFFF;
+  margin-top: 13em;
+}
+
+.showsImg {
+  background-image: url(../../Images/hanny-naibaho-388579-unsplash.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: border-box;
+  background-position-x: center;
+  background-position-y: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100vw;
+  height: auto;
+  width: 100vw;
+  height: auto;
+}
+
+.showsImg__links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.showsImg__links .showsImg__link {
+  font-weight: bold;
+  color: #FFFFFF;
+  font-size: 1.125rem;
+  margin-top: 1.5rem;
+}
+
+.showsImg__links .showsImg__link--rightSide {
+  margin-left: auto;
+}
+
+.showsImg__links .showsImg__link--rightEdge {
+  margin-left: 5rem;
+}
+
+.ticket__button {
+  border-radius: 5%;
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 1.125rem;
+  padding: .833333em 1.25em;
+  letter-spacing: 1px;
+  background-color: rgba(160, 160, 160, 0.4);
+  color: #FFFFFF;
+  border: 2px solid #FFFFFF;
+  font-size: .8em;
+}
+
+h2 {
+  font-weight: bolder;
+  font-size: 3.5rem;
+  line-height: 1.5em;
+}
+
+.showsBody__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: solid #D7D7D7 thin;
+}
+
+.showsBody__cell {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  vertical-align: top;
+}
+
+.shows {
+  color: #D7D7D7;
+}
+
+table {
+  color: #FFFFFF;
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 6em;
+}
+
+td p {
+  margin: 0;
+}
+
+td > p:first-child {
+  color: #FFFFFF;
+  font-weight: bold;
+}
+
+tbody > tr:last-child {
+  border: none;
+}
+
+@media only screen and (max-width: 1200px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 1080px) {
+  .gallery__imgContainer {
+    max-width: 26vw;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  html {
+    font-size: 11.5px;
+  }
+  .gallery__imgContainer {
+    max-width: 38vw;
+  }
+  .music__article {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .music__article--paragraph {
+    margin-top: 2em;
+    margin-left: 0;
+  }
+  .about__article {
+    display: block;
+  }
+}
+/*# sourceMappingURL=styles.css.map */

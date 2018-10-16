@@ -1,0 +1,47 @@
+@mixin flexColumnAndMargin{
+    display:flex;
+    flex-direction: column;
+    width:80%; 
+}
+@mixin sectionFormatting{
+    display:flex;
+    justify-content: center;
+    width:100vw;
+    height:auto;
+}
+
+.margin{
+    @include flexColumnAndMargin;  
+}
+
+.showsImg{ 
+    background-image: url(../../Images/hanny-naibaho-388579-unsplash.png);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-origin: border-box;
+    background-position-x: center;
+    background-position-y: center;
+    @include sectionFormatting;
+    height:100vh;
+
+}
+
+.showsImg__links{
+    display:flex;
+
+    .showsImg__link{
+        font-weight:bold; 
+        color:$white; 
+        font-size: 1.125rem;
+        margin-top: 1.5rem;
+        
+        &--rightSide{
+            margin-left: auto;
+       }
+
+       &--rightEdge{
+           margin-left: 5rem;
+       }
+    }
+   
+}

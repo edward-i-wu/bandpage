@@ -1,0 +1,410 @@
+
+
+// make variables for each color 
+$black: #000000; 
+$dgrey: #272727;
+$grey: #A0A0A0; 
+$lgrey: #D7D7D7;
+$offwhite: #F9F9F9;
+$white:#FFFFFF; 
+
+@mixin flexColumnAndMargin{
+    display:flex;
+    flex-direction: column;
+    width:80%; 
+}
+@mixin sectionFormatting{
+    display:flex;
+    justify-content: center;
+    width:100vw;
+    height:auto;
+}
+
+@mixin buttonFormatting{
+    border-radius: 5%;
+    font-family: "Poppins"; 
+    font-weight:600;
+    font-size: 1.125rem;
+    
+    padding: .833333em 1.25em;
+    letter-spacing:1px;
+}
+
+
+body{
+    display:flex;
+    flex-direction: column;
+    margin:0;
+    font-family:'Poppins';
+}
+
+.margin{
+    @include flexColumnAndMargin;  
+}
+
+.marginContent{
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.divider{
+    color:$lgrey;
+    width:1px; 
+    border:0;
+    margin: 2rem;
+}
+
+.mainImg{ 
+    background-image: url(../../Images/ana-grave-156852-unsplash.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-origin: border-box;
+    background-position-x: center;
+    background-position-y: center;
+    @include sectionFormatting;
+    height:100vh;
+
+}
+a{
+    letter-spacing:1px;
+    text-decoration: none;
+}
+
+//Area1 outer used to style general link 
+.mainImg__links{
+    display:flex;
+
+    .mainImg__link{
+        font-weight:bold; 
+        color:$white; 
+        font-size: 1.125rem;
+        margin-top: 1.5rem;
+        
+        &--rightSide{
+            margin-left: auto;
+       }
+
+       &--rightEdge{
+           margin-left: 5rem;
+       }
+    }
+   
+}
+
+
+.central{
+    margin:auto;
+    display:flex; 
+    flex-direction: column;
+    align-items:center;
+    &__date{
+        font-size:5.25rem;
+        font-weight:bolder;
+        color:$white;
+    }
+    &__title{
+        font-size:2.25rem;
+        color:$white;
+        text-align: center; 
+    }
+    &__button{
+        @include buttonFormatting;
+        background-color: $grey; 
+        color:$white;
+        border: 2px solid $white;
+        margin: 2.5rem;
+    }
+}
+
+
+.about{
+   @include sectionFormatting;
+    &__article{
+        display:flex; 
+        
+        &--leftP{
+            font-weight:bold;
+            flex-grow:1;
+            font-size:1.2em;
+            margin-right: 2em;
+        }
+        &--rightP{
+            line-height:2.15;
+            font-size:1em;
+            flex-grow:1.7;
+        }
+    }
+   
+}
+
+.music{
+    @include sectionFormatting;
+    background-color:$offwhite;
+ 
+    &__title{
+
+    }
+    &__article{
+        display:flex; 
+        align-items:flex-start;
+        
+        &--cover{
+            background-image: url(../../Images/bryan-minear-315773-unsplash.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-origin: border-box;
+            height: 45vh;
+            width:140vw;
+            flex-grow:1;
+            min-width: 240px;
+            display:flex;
+            justify-content: space-between;
+            
+            .cover__title{
+                font-size: 1.1vh;
+                font-weight:bold;
+                color:$white;
+                margin: 1.5vh 2.8vh;
+            }
+
+        }
+
+        &--paragraph{
+            .firstLine{
+                margin-top:0;
+            }
+            flex-grow:1.6;
+            margin-left:3em;
+        }
+    }
+
+}
+
+.gallery{
+    @include sectionFormatting;
+    height:auto; 
+    
+
+    &__section{
+        display:flex;
+        flex-wrap:wrap; 
+        justify-content: space-between;
+        align-items: baseline;
+    }
+    &__imgContainer{
+        max-height: 33vh;
+        height:26vh;
+        max-width: 18vw;
+        overflow:hidden;
+    }
+
+    &__image{
+        width:100%;
+        height:100%;
+        margin: 0 0 1em 0;
+        object-fit: cover;
+    }
+    &__image:hover{
+        filter:grayscale(0);
+    }
+}
+
+.comments{
+    @include sectionFormatting;
+    background-color: $offwhite;
+    &__form{
+        &--nameLabel{
+            font-size:1.5rem;
+            font-weight:bold;
+            display:block;
+        }
+        &--nameInput, &--commentsInput{
+            resize:none;
+            margin: 1em 0;
+        }
+        &--commentsInput{
+            margin-top:1.5em;
+        }
+        &--inputButton{
+            @include buttonFormatting;
+            background-color: $black; 
+            color:$white;
+            border: 2px solid $black;
+        }
+
+    }
+}
+
+
+.contact{
+    @include sectionFormatting;
+    background-color:$dgrey;
+    
+    
+    &__title{
+        color:$white;
+    }
+    &__article{
+        display:flex;
+        flex-wrap:wrap;
+        color: $white;
+        font-size:1.125rem;
+        .firstLine{
+            font-weight:bold;
+        }
+        div{
+            margin-top: 1em;
+            margin-bottom: 1em;
+        }
+    }
+    &__management{
+        margin-right: 7em;
+    }
+    &__agentUS{
+        margin-right: 7em;
+    }
+    &__agentUK{
+
+    }
+    
+    &__icons{
+        display:flex;
+        margin-top: 2.8em;
+        &--insta{
+            margin-right: 5em;
+        }
+        &--facebook{
+            margin-right: 5em;
+        }
+        &--twitter{
+
+        }
+
+    }
+
+    &__copyright{
+        font-weight:thin;
+        font-size: .625rem;
+        color:$white; 
+        margin-top: 13em;
+    }
+
+}
+
+.showsImg{ 
+    background-image: url(../../Images/hanny-naibaho-388579-unsplash.png);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-origin: border-box;
+    background-position-x: center;
+    background-position-y: center;
+    @include sectionFormatting;
+    width:100vw;
+    height:auto;
+
+}
+
+.showsImg__links{
+    display:flex;
+
+    .showsImg__link{
+        font-weight:bold; 
+        color:$white; 
+        font-size: 1.125rem;
+        margin-top: 1.5rem;
+        
+        &--rightSide{
+            margin-left: auto;
+       }
+
+       &--rightEdge{
+           margin-left: 5rem;
+       }
+    }
+   
+}
+
+//!!! table formatting
+.ticket__button{
+    @include buttonFormatting;
+    background-color: rgba(160,160,160,.4); 
+    color:$white;
+    border: 2px solid $white;
+    font-size: .8em;
+}
+
+//changes all section titles 
+h2{
+    font-weight:bolder;
+    font-size: 3.5rem;
+    line-height:1.5em;
+}
+.showsBody{
+    &__row{
+        display:flex;
+        justify-content: space-between;
+        border-bottom: solid $lgrey thin;
+    }
+    &__cell{
+        margin-top:1em;
+        margin-bottom:1em;
+        vertical-align: top;
+    }
+}
+.shows{
+    color:$lgrey;
+}
+table{
+    color:$white;
+    width:100%;
+    border-collapse: collapse;
+    margin-bottom: 6em;
+}
+
+td p{
+    margin:0;
+}
+td>p:first-child{
+    color:$white;
+    font-weight:bold;
+}
+tbody>tr:last-child{
+    border:none;
+}
+
+
+
+
+@media only screen and (max-width:1200px){
+    html{
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width:1080px){
+    .gallery__imgContainer{
+            max-width: 26vw;
+    }  
+    }
+@media only screen and (max-width:640px){
+    html{
+        font-size:11.5px;
+    }
+
+    .gallery__imgContainer{
+        max-width: 38vw;
+    } 
+    
+    .music__article{
+        flex-wrap:wrap;
+    }
+
+    .music__article--paragraph{
+        margin-top:2em;
+        margin-left:0;
+    }
+    .about__article{
+        display:block;
+    }
+}
+
