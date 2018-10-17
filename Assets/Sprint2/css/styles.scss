@@ -221,6 +221,7 @@ a{
         &--nameInput, &--commentsInput{
             resize:none;
             margin: 1em 0;
+            display:block;
         }
         &--commentsInput{
             margin-top:1.5em;
@@ -333,26 +334,23 @@ a{
     font-size: .8em;
 }
 
-//changes all section titles 
-h2{
-    font-weight:bolder;
-    font-size: 3.5rem;
-    line-height:1.5em;
-}
-.showsBody{
-    &__row{
-        display:flex;
-        justify-content: space-between;
-        border-bottom: solid $lgrey thin;
-    }
-    &__cell{
-        margin-top:1em;
-        margin-bottom:1em;
-        vertical-align: top;
+.showsTable{
+    width:100%;
+    .showsBody{
+        &__row{
+            //display:flex;
+            justify-content: space-between;
+            border-bottom: solid $lgrey thin;
+        }
+        &__cell{
+            padding-top:1em;
+            padding-bottom:1em;
+            vertical-align: top;
+        }
     }
 }
 .shows{
-    color:$lgrey;
+    color:$white;
 }
 table{
     color:$white;
@@ -361,19 +359,30 @@ table{
     margin-bottom: 6em;
 }
 
-td p{
+td{
+    p{
     margin:0;
+    }
+    >p:first-child{
+        color:$white;
+        font-weight:bold;
+    }
 }
-td>p:first-child{
-    color:$white;
-    font-weight:bold;
-}
-tbody>tr:last-child{
+#lastRow{
     border:none;
 }
+tr>td:last-child{
+    text-align:right;
+}
 
 
 
+//changes all section titles 
+h2{
+    font-weight:bolder;
+    font-size: 3.5rem;
+    line-height:1.5em;
+}
 
 @media only screen and (max-width:1200px){
     html{

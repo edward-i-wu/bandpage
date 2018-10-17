@@ -275,6 +275,7 @@ a {
 .comments__form--nameInput, .comments__form--commentsInput {
   resize: none;
   margin: 1em 0;
+  display: block;
 }
 
 .comments__form--commentsInput {
@@ -411,30 +412,25 @@ a {
   font-size: .8em;
 }
 
-h2 {
-  font-weight: bolder;
-  font-size: 3.5rem;
-  line-height: 1.5em;
+.showsTable {
+  width: 100%;
 }
 
-.showsBody__row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.showsTable .showsBody__row {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   border-bottom: solid #D7D7D7 thin;
 }
 
-.showsBody__cell {
-  margin-top: 1em;
-  margin-bottom: 1em;
+.showsTable .showsBody__cell {
+  padding-top: 1em;
+  padding-bottom: 1em;
   vertical-align: top;
 }
 
 .shows {
-  color: #D7D7D7;
+  color: #FFFFFF;
 }
 
 table {
@@ -453,8 +449,18 @@ td > p:first-child {
   font-weight: bold;
 }
 
-tbody > tr:last-child {
+#lastRow {
   border: none;
+}
+
+tr > td:last-child {
+  text-align: right;
+}
+
+h2 {
+  font-weight: bolder;
+  font-size: 3.5rem;
+  line-height: 1.5em;
 }
 
 @media only screen and (max-width: 1200px) {
