@@ -209,14 +209,13 @@ a{
     }
 }
 
-.comments{
+.commentSection{
     @include sectionFormatting;
     background-color: $offwhite;
     &__form{
         &--nameLabel{
             font-size:1.5rem;
             font-weight:bold;
-            display:block;
         }
         &--nameInput, &--commentsInput{
             resize:none;
@@ -229,12 +228,49 @@ a{
         &--inputButton{
             @include buttonFormatting;
             background-color: $black; 
+            padding-left: 2.3em;
+            padding-right: 2.3em;
             color:$white;
             border: 2px solid $black;
-        }
+            margin-bottom: 2em;
+        }      
+    }
+    &List{
+        list-style:none;
+        text-align:left;
+        padding-left:0;
+        .comment{
+            width:100%;
+            border-style: solid;
+            border-color: $lgrey;
+            border-width: 1px 0; 
+            display:inline-block;
+           
+            &__name, &__date{
+                margin-top: 1.5em;
+                margin-bottom: .5em;
+                font-weight:bold;
+                font-size: .875rem;
+                display:inline-block;
+            }
 
+            &__date{
+                color:$grey;
+                font-weight: normal;
+                margin-left: 1.3em;
+            }
+
+            &__body{
+                font-size:.75rem;
+                // since font scaled down .75, 
+                //we have divide 1.5/.75 to get same margin as in .comment__name 
+                margin-bottom:2em;
+            }
+        }
     }
 }
+
+
 
 
 .contact{
@@ -299,10 +335,19 @@ a{
     background-origin: border-box;
     background-position-x: center;
     background-position-y: center;
-    @include sectionFormatting;
+   
     width:100vw;
-    height:auto;
-
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+    filter: blur(2px) contrast(.8);
+}
+.showsContent{
+    position:relative; 
+   @include sectionFormatting;
+    z-index: 1;
 }
 
 .showsImg__links{
@@ -328,7 +373,7 @@ a{
 //!!! table formatting
 .ticket__button{
     @include buttonFormatting;
-    background-color: rgba(160,160,160,.4); 
+    background-color: rgba(160,160,160,.8); 
     color:$white;
     border: 2px solid $white;
     font-size: .8em;

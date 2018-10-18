@@ -254,7 +254,7 @@ a {
           filter: grayscale(0);
 }
 
-.comments {
+.commentSection {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -266,23 +266,22 @@ a {
   background-color: #F9F9F9;
 }
 
-.comments__form--nameLabel {
+.commentSection__form--nameLabel {
   font-size: 1.5rem;
   font-weight: bold;
-  display: block;
 }
 
-.comments__form--nameInput, .comments__form--commentsInput {
+.commentSection__form--nameInput, .commentSection__form--commentsInput {
   resize: none;
   margin: 1em 0;
   display: block;
 }
 
-.comments__form--commentsInput {
+.commentSection__form--commentsInput {
   margin-top: 1.5em;
 }
 
-.comments__form--inputButton {
+.commentSection__form--inputButton {
   border-radius: 5%;
   font-family: "Poppins";
   font-weight: 600;
@@ -290,8 +289,44 @@ a {
   padding: .833333em 1.25em;
   letter-spacing: 1px;
   background-color: #000000;
+  padding-left: 2.3em;
+  padding-right: 2.3em;
   color: #FFFFFF;
   border: 2px solid #000000;
+  margin-bottom: 2em;
+}
+
+.commentSectionList {
+  list-style: none;
+  text-align: left;
+  padding-left: 0;
+}
+
+.commentSectionList .comment {
+  width: 100%;
+  border-style: solid;
+  border-color: #D7D7D7;
+  border-width: 1px 0;
+  display: inline-block;
+}
+
+.commentSectionList .comment__name, .commentSectionList .comment__date {
+  margin-top: 1.5em;
+  margin-bottom: .5em;
+  font-weight: bold;
+  font-size: .875rem;
+  display: inline-block;
+}
+
+.commentSectionList .comment__date {
+  color: #A0A0A0;
+  font-weight: normal;
+  margin-left: 1.3em;
+}
+
+.commentSectionList .comment__body {
+  font-size: .75rem;
+  margin-bottom: 2em;
 }
 
 .contact {
@@ -366,6 +401,18 @@ a {
   background-origin: border-box;
   background-position-x: center;
   background-position-y: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  -webkit-filter: blur(2px) contrast(0.8);
+          filter: blur(2px) contrast(0.8);
+}
+
+.showsContent {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -374,8 +421,7 @@ a {
           justify-content: center;
   width: 100vw;
   height: auto;
-  width: 100vw;
-  height: auto;
+  z-index: 1;
 }
 
 .showsImg__links {
@@ -406,7 +452,7 @@ a {
   font-size: 1.125rem;
   padding: .833333em 1.25em;
   letter-spacing: 1px;
-  background-color: rgba(160, 160, 160, 0.4);
+  background-color: rgba(160, 160, 160, 0.8);
   color: #FFFFFF;
   border: 2px solid #FFFFFF;
   font-size: .8em;
