@@ -34,20 +34,20 @@ form.addEventListener(  'submit',
                         // temporarily disable button to prevent spam 
                         submitButton.setAttribute("disabled","true");
                         setInterval(function(){submitButton.removeAttribute("disabled")},2000);
-                        //call function that actually updates comments DOM and comments array 
+                        //function that actually updates comments DOM & comments array 
                         submitEvent(event)} );
 
 function submitEvent(event){
     //loop through info form.elements
     let name;
     let body;
+    let value;
     for(let i =0; i<form.elements.length; i++){
         //continues if not textarea input
         if(form.elements[i].tagName.toLowerCase()!=="textarea"){
             continue;
         }
-
-        let value = form.elements[i].value; 
+        value = form.elements[i].value; 
 
         if(form.elements[i].className === "commentSection__form--nameInput"){
             name = value; 

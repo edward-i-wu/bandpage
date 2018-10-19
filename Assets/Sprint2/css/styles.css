@@ -469,6 +469,7 @@ a {
   color: #FFFFFF;
   border: 2px solid #FFFFFF;
   font-size: .8em;
+  white-space: nowrap;
 }
 
 .showsTable {
@@ -535,8 +536,16 @@ h2 {
 }
 
 @media only screen and (max-width: 640px) {
+  .margin {
+    width: 90%;
+  }
   html {
-    font-size: 11.5px;
+    font-size: 14px;
+  }
+  .gallery__section {
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
   }
   .gallery__imgContainer {
     max-width: 38vw;
@@ -549,8 +558,14 @@ h2 {
     margin-top: 2em;
     margin-left: 0;
   }
+  .music__article--cover {
+    height: 70vh;
+  }
   .about__article {
     display: block;
+  }
+  .ticket__button {
+    padding: .5em .5em;
   }
 }
 /*# sourceMappingURL=styles.css.map */

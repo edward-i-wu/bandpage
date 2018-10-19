@@ -391,6 +391,7 @@ a{
     color:$white;
     border: 2px solid $white;
     font-size: .8em;
+    white-space: nowrap;
 }
 
 .showsTable{
@@ -455,24 +456,38 @@ h2{
     }  
     }
 @media only screen and (max-width:640px){
-    html{
-        font-size:11.5px;
+    .margin{
+        width:90%;
     }
-
+    html{
+        font-size:14px;
+    }
+    .gallery__section{
+        justify-content: space-evenly;
+    }
     .gallery__imgContainer{
         max-width: 38vw;
     } 
     
     .music__article{
         flex-wrap:wrap;
-    }
+    
 
-    .music__article--paragraph{
-        margin-top:2em;
-        margin-left:0;
+        &--paragraph{
+            margin-top:2em;
+            margin-left:0;
+        }
+
+        &--cover{
+            height:70vh;
+        }
+
     }
     .about__article{
         display:block;
+    }
+    .ticket__button{
+        padding: .5em .5em;
     }
 
 }
