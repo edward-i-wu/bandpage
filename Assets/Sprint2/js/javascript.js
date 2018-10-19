@@ -17,11 +17,11 @@ let comments = commentsUL.querySelectorAll("li");
 Array.prototype.forEach.call(comments, current=>{
     let name= current.getElementsByClassName("comment__name")[0].innerHTML;
     let body = current.getElementsByClassName("comment__body")[0].innerHTML;
-    let date = current.getElementsByClassName("comment__date")[0].innerHTML; 
+    let date = current.getElementsByClassName("comment__date")[0].innerHTML;
     comArray.push(new comment(name, body,date));
 });
 
-//!!!reverse so we can simply push newest comments to the end
+//reverse so we can simply push newest comments to the end
 comArray=comArray.reverse();
 
 //find the form element, add event listener and stop default 
@@ -113,41 +113,47 @@ function displayComment(item){
      //append li to live ul
      commentsUL.appendChild(newListItem);
 }
-//
+
+//array of objects to use Array.find() on 
+//to find appropriate time-scale in terms of miliseconds
+const msInYear = 1000*60*60*24*365;
+//count 30 days as a month 
+const msInMonth= msInYear/365*30;
+const msInDay = msInMonth/30;
+const msInHour = msInDay/24;
+const msInMinute = msInHour/60; 
+const msInSecond = msInMinute/60; 
+const timeScale = [ {key: msInYear, value:"year"},
+                    {key: msInMonth, value: "month"},
+                    {key: msInDay, value: "day"},
+                    {key: msInHour, value: "hour"},
+                    {key: msInMinute, value: "minute"},
+                    {key: msInSecond, value: "second"},
+                    {key: -1, value:"Just a moment ago"}
+                ];
+
+
 function formatDate(date){
-    let currentDate= new Date(); 
-    //difference in miliseconds 
-    let diff = currentDate - date; 
-    //convert to seconds 
-    diff = diff/1000; 
-    if(diff<1){
-        return "Just a moment ago";
-    }
-    if(diff < 60){
-        return diff + " seconds ago";
+    if(date instanceof Date){
+        let currentDate= new Date(); 
+        //difference in miliseconds 
+        let diff = currentDate - date; 
+        //find the correct time scale using timeScale
+        let timeUnit=timeScale.find(time=>{ return diff > time.key}); 
+
+        if(timeUnit.key===-1){
+            return timeUnit.value; 
+        }
+
+        let ans = Math.round(diff/timeUnit.key); 
+        if(ans===1){
+            return ans + " " + timeUnit.value + " ago" 
+        }else{
+            return ans + " " + timeUnit.value + "s ago" 
+        }
     }else{
-        var seconds = diff%60; 
+        return date; 
     }
-
-    //convert to minutes
-    diff = diff/60;
-    if(diff<60){
-        return diff + " minutes ago " + seconds + " seconds ago";
-    }else{
-        var minutes = diff%60; 
-    }
-    //convert to hours
-    diff = diff/60;
-    if(diff<24){
-        return diff+" hours ago " + minutes + " minutes ago " + seconds + " seconds ago";
-    }else{
-        var hours = diff%24; 
-    }
-
-    //convert to 
-
-
-    return date
 }
 
 //comment object 
