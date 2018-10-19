@@ -160,6 +160,7 @@ a {
   width: 100vw;
   height: auto;
   background-color: #F9F9F9;
+  padding-bottom: 5%;
 }
 
 .music__player {

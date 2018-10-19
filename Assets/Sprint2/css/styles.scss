@@ -140,6 +140,8 @@ a{
 .music{
     @include sectionFormatting;
     background-color:$offwhite;
+    //add bottom padding to offset the absolutely positioned player 
+    padding-bottom: 5%; 
  
     &__player{
         position:absolute;
