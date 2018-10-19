@@ -141,6 +141,11 @@ a{
     @include sectionFormatting;
     background-color:$offwhite;
  
+    &__player{
+        position:absolute;
+        top:100%;
+    }
+
     &__title{
 
     }
@@ -159,6 +164,7 @@ a{
             min-width: 240px;
             display:flex;
             justify-content: space-between;
+            position:relative;
             
             .cover__title{
                 font-size: 1.1vh;

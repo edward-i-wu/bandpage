@@ -1,52 +1,53 @@
 //set main date page
-var date = new Date().toLocaleDateString(); 
+let date = new Date().toLocaleDateString(); 
 dateFormatted = date.replace(/\//g, ".");
-var target= document.getElementById("mainDate");
-var dateFinal = document.createTextNode(dateFormatted); 
+let target= document.getElementById("mainDate");
+let dateFinal = document.createTextNode(dateFormatted); 
 target.appendChild(dateFinal);
 
 //<----------------------------------------------------------------------->
-//initialise the comments array and get existing comments ul
-var comArray =[];
-var commentsUL = document.getElementById("existingComments");
+//initialise the comments array and get existing comments ul as global variables
+let comArray =[];
+let commentsUL = document.getElementById("existingComments");
 //returns a STATIC NodeList
-var comments = commentsUL.querySelectorAll("li");
+let comments = commentsUL.querySelectorAll("li");
 
 //use this specific method so old IE compatible 
 //fill the array with current comments
-Array.prototype.forEach.call(comments, function(current){
-    var name= current.getElementsByClassName("comment__name")[0].innerHTML;
-    var body = current.getElementsByClassName("comment__body")[0].innerHTML;
-    var date = current.getElementsByClassName("comment__date")[0].innerHTML; 
+Array.prototype.forEach.call(comments, current=>{
+    let name= current.getElementsByClassName("comment__name")[0].innerHTML;
+    let body = current.getElementsByClassName("comment__body")[0].innerHTML;
+    let date = current.getElementsByClassName("comment__date")[0].innerHTML; 
     comArray.push(new comment(name, body,date));
 });
 
-//!!!reverse
+//!!!reverse so we can simply push newest comments to the end
 comArray=comArray.reverse();
 
 //find the form element, add event listener and stop default 
 
-var form= document.getElementById("commentform");
-var submitButton= document.getElementById("submitButton");
+let form= document.getElementById("commentform");
+let submitButton= document.getElementById("submitButton");
 
 form.addEventListener(  'submit', 
-                        function(event){ event.preventDefault();
+                        event=>{ event.preventDefault();
+                        // temporarily disable button to prevent spam 
                         submitButton.setAttribute("disabled","true");
                         setInterval(function(){submitButton.removeAttribute("disabled")},2000);
+                        //call function that actually updates comments DOM and comments array 
                         submitEvent(event)} );
 
 function submitEvent(event){
-    
-    //loop through info from form.elements
-    var name;
-    var body;
-    for(var i =0; i<form.elements.length; i++){
+    //loop through info form.elements
+    let name;
+    let body;
+    for(let i =0; i<form.elements.length; i++){
         //continues if not textarea input
         if(form.elements[i].tagName.toLowerCase()!=="textarea"){
             continue;
         }
 
-        var value = form.elements[i].value; 
+        let value = form.elements[i].value; 
 
         if(form.elements[i].className === "commentSection__form--nameInput"){
             name = value; 
@@ -56,8 +57,8 @@ function submitEvent(event){
         }
        
     }
-    var newComment = new comment(name,body, new Date());
-    //add to your array 
+    let newComment = new comment(name,body, new Date());
+    //add to comments array 
     comArray.push(newComment);
     //clear
     clearComments();
@@ -67,46 +68,87 @@ function submitEvent(event){
 
 //clear list passed by submitEvent
 function clearComments(){
-    for(var i=commentsUL.childNodes.length-1; i>=0; i--){
+    for(let i=commentsUL.childNodes.length-1; i>=0; i--){
          commentsUL.removeChild(commentsUL.childNodes[i]);
         } 
 }
 
 function renderComments(){
-    var newListItem;
-    var newNameChild;
-    var newBodyChild;
-    for(var i=comArray.length-1; i>=0;i--){
-        //variable for current comment
-        var item = comArray[i];
-        //create the three nodes to be added
-        newListItem= document.createElement('li');
-        newListItem.setAttribute("class","comment");
+    let newListItem;
+    let newNameChild;
+    let newBodyChild;
 
-        newNameChild = document.createElement('div');
-        newNameChild.setAttribute("class","comment__name");
-
-        newBodyChild = document.createElement('div');
-        newBodyChild.setAttribute("class", "comment__body");
-        //creates text nodes
-        var textName = document.createTextNode(item.name);
-        var textBody = document.createTextNode(item.body);
-
-        //append text to divs, and divs to li
-        newNameChild.appendChild(textName);
-        newBodyChild.appendChild(textBody);
-        newListItem.appendChild(newNameChild);
-        newListItem.appendChild(newBodyChild);
-        //!!!date
-        
-        commentsUL.appendChild(newListItem);
-
+    for(let i=comArray.length-1; i>=0;i--){
+        //call function that builds and displays the comment 
+        displayComment(comArray[i]);
     }
 }
 
-//create new comment from form 
+function displayComment(item){
+     //create the three nodes to be added
+     newListItem= document.createElement('li');
+     newListItem.setAttribute("class","comment");
 
-//function createNewCom(form)
+     newNameChild = document.createElement('div');
+     newNameChild.setAttribute("class","comment__name");
+
+     newDateChild = document.createElement('div');
+     newDateChild.setAttribute("class","comment__date");
+
+     newBodyChild = document.createElement('div');
+     newBodyChild.setAttribute("class", "comment__body");
+     //creates text nodes
+     let textName = document.createTextNode(item.name);
+     let textBody = document.createTextNode(item.body);
+     let textDate = document.createTextNode(formatDate(item.date));
+
+     //append text to divs
+     newNameChild.appendChild(textName);
+     newBodyChild.appendChild(textBody);
+     newDateChild.appendChild(textDate);
+     //append divs to li
+     newListItem.appendChild(newNameChild);
+     newListItem.appendChild(newDateChild);
+     newListItem.appendChild(newBodyChild);
+     //append li to live ul
+     commentsUL.appendChild(newListItem);
+}
+//
+function formatDate(date){
+    let currentDate= new Date(); 
+    //difference in miliseconds 
+    let diff = currentDate - date; 
+    //convert to seconds 
+    diff = diff/1000; 
+    if(diff<1){
+        return "Just a moment ago";
+    }
+    if(diff < 60){
+        return diff + " seconds ago";
+    }else{
+        var seconds = diff%60; 
+    }
+
+    //convert to minutes
+    diff = diff/60;
+    if(diff<60){
+        return diff + " minutes ago " + seconds + " seconds ago";
+    }else{
+        var minutes = diff%60; 
+    }
+    //convert to hours
+    diff = diff/60;
+    if(diff<24){
+        return diff+" hours ago " + minutes + " minutes ago " + seconds + " seconds ago";
+    }else{
+        var hours = diff%24; 
+    }
+
+    //convert to 
+
+
+    return date
+}
 
 //comment object 
 function comment(name, body, date){

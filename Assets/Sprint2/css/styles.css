@@ -162,6 +162,11 @@ a {
   background-color: #F9F9F9;
 }
 
+.music__player {
+  position: absolute;
+  top: 100%;
+}
+
 .music__article {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -188,6 +193,7 @@ a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  position: relative;
 }
 
 .music__article--cover .cover__title {

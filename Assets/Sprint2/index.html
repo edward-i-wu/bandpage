@@ -63,6 +63,10 @@
                 <div class="music__article--cover">
                     <div class="cover__title">THE BEES KNEES</div>
                     <div class="cover__title">DUSK</div>
+                    <iframe class="music__player"
+                        style="border: 0; width: 100%; height: 42px;" 
+                        src="https://bandcamp.com/EmbeddedPlayer/album=2270774840/size=small/bgcol=ffffff/linkcol=0687f5/artwork=none/transparent=true/" seamless>
+                        <a href="http://beeskneesplease.bandcamp.com/album/mime-generator-ep">Mime Generator EP by Beesknees</a></iframe>
                 </div>
                 <div class="music__article--paragraph">
                         <p class="firstLine"><strong>The Bees Knees</strong> - Dusk</p>
@@ -110,11 +114,11 @@
             <h2 class="commentSection__title"> COMMENTS</h2>
             <form class="commentSection__form" id="commentform">
                 <label class="commentSection__form--nameLabel">Name
-                    <textarea class="commentSection__form--nameInput" type="text" cols="65"></textarea>
+                    <textarea class="commentSection__form--nameInput" type="text" cols="65" required></textarea>
                 </label>
                 <label class="commentSection__form--nameLabel">Add a new comment
                     <textarea class="commentSection__form--commentsInput" type="text" 
-                        cols="65" rows="8" wrap="hard" ></textarea>
+                        cols="65" rows="8" wrap="hard" required></textarea>
                 </label>
                 <button id="submitButton" class="commentSection__form--inputButton" type="submit">POST COMMENT</button>
             </form>
