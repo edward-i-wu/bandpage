@@ -1,4 +1,4 @@
-//set main date page
+//set main date page(Sprint 1)
 let date = new Date().toLocaleDateString(); 
 dateFormatted = date.replace(/\//g, ".");
 let target= document.getElementById("mainDate");
@@ -6,23 +6,55 @@ let dateFinal = document.createTextNode(dateFormatted);
 target.appendChild(dateFinal);
 
 //<----------------------------------------------------------------------->
-//initialise the comments array and get existing comments ul as global variables
-let comArray =[];
+//Sprint 2
+//array of objects to use Array.find() on 
+//to find appropriate time-scale in terms of miliseconds
 let commentsUL = document.getElementById("existingComments");
-//returns a STATIC NodeList
-let comments = commentsUL.querySelectorAll("li");
 
-//use this specific method so old IE compatible 
-//fill the array with current comments
-Array.prototype.forEach.call(comments, current=>{
-    let name= current.getElementsByClassName("comment__name")[0].innerHTML;
-    let body = current.getElementsByClassName("comment__body")[0].innerHTML;
-    let date = current.getElementsByClassName("comment__date")[0].innerHTML;
-    comArray.push(new comment(name, body,date));
-});
+//count 30 days as a month 
+const msInSecond = 1000; 
+const msInMinute = msInSecond*60;
+const msInHour = msInMinute*60;
+const msInDay = msInHour*24;
+const msInMonth= msInDay*30;
+const msInYear = msInDay*365;
 
-//reverse so we can simply push newest comments to the end
-comArray=comArray.reverse();
+
+const timeScale = [ {key: msInYear, value:"year"},
+                    {key: msInMonth, value: "month"},
+                    {key: msInDay, value: "day"},
+                    {key: msInHour, value: "hour"},
+                    {key: msInMinute, value: "minute"},
+                    {key: msInSecond, value: "second"},
+                    {key: -1, value:"Just a moment ago"}
+                ];
+
+//initial comments array with hardcoded comments like in copy and get existing comments ul as global variables
+let comArray =[ new comment("Jill Saunders", "Masters of their instruments and on time with each other all the time, perfect what a pleasure", new Date(2018, 0)),
+                new comment("Edward Anthony", "These guys are beyond great. The opening melody was incredible and had to be very difficult. The #1 band I regret not seeing LIVE", new Date(2018, 6)),
+                new comment("Corey Kohan", "Its just amazing all the sounds that come out of this band. Neil is just an animal on the drum kit and Geddy and Alex are just as good on their instruments.", new Date(2018, 7)),
+                new comment("Jack Deng", "They BLEW the ROOF off at their last show, once everyone started figuring out they were going. This is still simply the greatest opening of a concert I have EVER witnessed.", new Date(2018, 8,29))];
+
+//initial comments render
+renderComments();
+
+
+
+
+
+
+// //use this specific method so old IE compatible 
+// //fill the array with current comments
+// Array.prototype.forEach.call(comments, current=>{
+//     let name= current.getElementsByClassName("comment__name")[0].innerHTML;
+//     let body = current.getElementsByClassName("comment__body")[0].innerHTML;
+//     let date = current.getElementsByClassName("comment__date")[0].innerHTML;
+//     comArray.push(new comment(name, body,date));
+// });
+
+// //reverse so we can simply push newest comments to the end
+// comArray=comArray.reverse();
+
 
 //find the form element, add event listener and stop default 
 
@@ -60,9 +92,9 @@ function submitEvent(event){
     let newComment = new comment(name,body, new Date());
     //add to comments array 
     comArray.push(newComment);
-    //clear
+    //clear dom
     clearComments();
-    //re-render
+    //re-render dom
     renderComments();
 }
 
@@ -114,46 +146,29 @@ function displayComment(item){
      commentsUL.appendChild(newListItem);
 }
 
-//array of objects to use Array.find() on 
-//to find appropriate time-scale in terms of miliseconds
-const msInYear = 1000*60*60*24*365;
-//count 30 days as a month 
-const msInMonth= msInYear/365*30;
-const msInDay = msInMonth/30;
-const msInHour = msInDay/24;
-const msInMinute = msInHour/60; 
-const msInSecond = msInMinute/60; 
-const timeScale = [ {key: msInYear, value:"year"},
-                    {key: msInMonth, value: "month"},
-                    {key: msInDay, value: "day"},
-                    {key: msInHour, value: "hour"},
-                    {key: msInMinute, value: "minute"},
-                    {key: msInSecond, value: "second"},
-                    {key: -1, value:"Just a moment ago"}
-                ];
 
 
 function formatDate(date){
-    if(date instanceof Date){
         let currentDate= new Date(); 
         //difference in miliseconds 
         let diff = currentDate - date; 
         //find the correct time scale using timeScale
         let timeUnit=timeScale.find(time=>{ return diff > time.key}); 
 
+        //for comments less than 1 second, the key-value pair returned is {key:-1, value:"Just a moment ago"}
+        //therefore just return the value 
         if(timeUnit.key===-1){
             return timeUnit.value; 
         }
-
+        //convert to the unit of time we will display, and round to the nearest half 
         let ans = Math.round(diff/timeUnit.key); 
+        //check if the value is singular, in order to display grammatically correct string
         if(ans===1){
             return ans + " " + timeUnit.value + " ago" 
         }else{
             return ans + " " + timeUnit.value + "s ago" 
         }
-    }else{
-        return date; 
-    }
+ 
 }
 
 //comment object 
