@@ -1,4 +1,5 @@
-//set main date page(Sprint 1)
+//Sprint 1
+//set main date page
 let date = new Date().toLocaleDateString(); 
 dateFormatted = date.replace(/\//g, ".");
 let target= document.getElementById("mainDate");
@@ -7,19 +8,18 @@ target.appendChild(dateFinal);
 
 //<----------------------------------------------------------------------->
 //Sprint 2
-//array of objects to use Array.find() on 
-//to find appropriate time-scale in terms of miliseconds
-let commentsUL = document.getElementById("existingComments");
 
-//count 30 days as a month 
+
+ 
 const msInSecond = 1000; 
 const msInMinute = msInSecond*60;
 const msInHour = msInMinute*60;
 const msInDay = msInHour*24;
-const msInMonth= msInDay*30;
+const msInMonth= msInDay*30; //count 30 days as a month
 const msInYear = msInDay*365;
 
-
+//array of objects to use Array.find() on 
+//to find appropriate time-scale in terms of miliseconds
 const timeScale = [ {key: msInYear, value:"year"},
                     {key: msInMonth, value: "month"},
                     {key: msInDay, value: "day"},
@@ -29,18 +29,15 @@ const timeScale = [ {key: msInYear, value:"year"},
                     {key: -1, value:"Just a moment ago"}
                 ];
 
-//initial comments array with hardcoded comments like in copy and get existing comments ul as global variables
+//initial hard coded comments array, reflecting comments in copy and get existing comments ul as global variables
 let comArray =[ new comment("Jill Saunders", "Masters of their instruments and on time with each other all the time, perfect what a pleasure", new Date(2018, 0)),
                 new comment("Edward Anthony", "These guys are beyond great. The opening melody was incredible and had to be very difficult. The #1 band I regret not seeing LIVE", new Date(2018, 6)),
                 new comment("Corey Kohan", "Its just amazing all the sounds that come out of this band. Neil is just an animal on the drum kit and Geddy and Alex are just as good on their instruments.", new Date(2018, 7)),
                 new comment("Jack Deng", "They BLEW the ROOF off at their last show, once everyone started figuring out they were going. This is still simply the greatest opening of a concert I have EVER witnessed.", new Date(2018, 8,29))];
-
+//get comments UL container
+let commentsUL = document.getElementById("existingComments");
 //initial comments render
 renderComments();
-
-
-
-
 
 
 // //use this specific method so old IE compatible 
@@ -76,7 +73,7 @@ function submitEvent(event){
     let value;
     for(let i =0; i<form.elements.length; i++){
         //continues if not textarea input
-        if(form.elements[i].tagName.toLowerCase()!=="textarea"){
+        if(form.elements[i].tagName.toLowerCase()!=="textarea" && form.elements[i].tagName.toLowerCase()!=="input"){
             continue;
         }
         value = form.elements[i].value; 
@@ -87,7 +84,8 @@ function submitEvent(event){
         if(form.elements[i].className === "commentSection__form--commentsInput"){
             body = value; 
         }
-       
+        //clear the input and textarea values after submit
+        form.elements[i].value = '';
     }
     let newComment = new comment(name,body, new Date());
     //add to comments array 

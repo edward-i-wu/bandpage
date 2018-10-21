@@ -46,7 +46,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 100vw;
+  width: 99vw;
   height: auto;
   height: 100vh;
 }
@@ -123,7 +123,7 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 100vw;
+  width: 99vw;
   height: auto;
 }
 
@@ -157,7 +157,7 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 100vw;
+  width: 99vw;
   height: auto;
   background-color: #F9F9F9;
   padding-bottom: 5%;
@@ -226,7 +226,7 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 100vw;
+  width: 99vw;
   height: auto;
   height: auto;
 }
@@ -246,8 +246,7 @@ a {
 }
 
 .gallery__imgContainer {
-  max-height: 33vh;
-  height: 26vh;
+  height: 36vh;
   max-width: 18vw;
   overflow: hidden;
 }
@@ -272,7 +271,7 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 100vw;
+  width: 99vw;
   height: auto;
   background-color: #F9F9F9;
 }
@@ -288,6 +287,10 @@ a {
   display: block;
   width: 80vw;
   max-width: 550px;
+}
+
+.commentSection__form--nameInput {
+  padding: .5em 0;
 }
 
 .commentSection__form--commentsInput {
@@ -327,7 +330,7 @@ a {
   margin-top: 1.5em;
   margin-bottom: .5em;
   font-weight: bold;
-  font-size: .875rem;
+  font-size: .875em;
   display: inline-block;
 }
 
@@ -338,7 +341,7 @@ a {
 }
 
 .commentSectionList .comment__body {
-  font-size: .75rem;
+  font-size: .75em;
   margin-bottom: 2em;
 }
 
@@ -349,7 +352,7 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 100vw;
+  width: 99vw;
   height: auto;
   background-color: #272727;
 }
@@ -432,7 +435,7 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 100vw;
+  width: 99vw;
   height: auto;
   z-index: 1;
 }
@@ -477,9 +480,6 @@ a {
 }
 
 .showsTable .showsBody__row {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   border-bottom: solid #D7D7D7 thin;
 }
 
@@ -523,6 +523,10 @@ h2 {
   line-height: 1.5em;
 }
 
+textarea, input {
+  font-family: 'Poppins';
+}
+
 @media only screen and (max-width: 1200px) {
   html {
     font-size: 14px;
@@ -532,6 +536,10 @@ h2 {
 @media only screen and (max-width: 1080px) {
   .gallery__imgContainer {
     max-width: 26vw;
+    max-height: 30vh;
+  }
+  .gallery__image {
+    margin: 0 0 .5em 0;
   }
 }
 
@@ -540,7 +548,10 @@ h2 {
     width: 90%;
   }
   html {
-    font-size: 14px;
+    font-size: 12px;
+  }
+  .marginContent {
+    font-size: 15px;
   }
   .gallery__section {
     -webkit-box-pack: space-evenly;
@@ -549,6 +560,9 @@ h2 {
   }
   .gallery__imgContainer {
     max-width: 38vw;
+  }
+  .gallery__image {
+    margin: 0 0 1em 0;
   }
   .music__article {
     -ms-flex-wrap: wrap;

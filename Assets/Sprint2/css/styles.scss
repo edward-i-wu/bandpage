@@ -1,6 +1,6 @@
 
 
-// make variables for each color 
+//variables for each color 
 $black: #000000; 
 $dgrey: #272727;
 $grey: #A0A0A0; 
@@ -16,7 +16,7 @@ $white:#FFFFFF;
 @mixin sectionFormatting{
     display:flex;
     justify-content: center;
-    width:100vw;
+    width:99vw; //100vw was causing horizontal scollbar for some reason
     height:auto;
 }
 
@@ -204,8 +204,8 @@ a{
         align-items: baseline;
     }
     &__imgContainer{
-        max-height: 33vh;
-        height:26vh;
+        //max-height: 33vh;
+        height:36vh;
         max-width: 18vw;
         overflow:hidden;
     }
@@ -236,6 +236,9 @@ a{
             width:80vw;
             max-width: 550px;
         }
+        &--nameInput{
+            padding:.5em 0;
+        }
         &--commentsInput{
             margin-top:1.5em;
         }
@@ -264,7 +267,7 @@ a{
                 margin-top: 1.5em;
                 margin-bottom: .5em;
                 font-weight:bold;
-                font-size: .875rem;
+                font-size: .875em;
                 display:inline-block;
             }
 
@@ -275,7 +278,7 @@ a{
             }
 
             &__body{
-                font-size:.75rem;
+                font-size:.75em;
                 // since font scaled down .75, 
                 //we have divide 1.5/.75 to get same margin as in .comment__name 
                 margin-bottom:2em;
@@ -384,7 +387,7 @@ a{
    
 }
 
-//!!! table formatting
+
 .ticket__button{
     @include buttonFormatting;
     background-color: rgba(160,160,160,.8); 
@@ -398,8 +401,6 @@ a{
     width:100%;
     .showsBody{
         &__row{
-            //display:flex;
-            justify-content: space-between;
             border-bottom: solid $lgrey thin;
         }
         &__cell{
@@ -443,6 +444,9 @@ h2{
     font-size: 3.5rem;
     line-height:1.5em;
 }
+textarea, input{
+    font-family: 'Poppins';
+}
 
 @media only screen and (max-width:1200px){
     html{
@@ -453,22 +457,34 @@ h2{
 @media only screen and (max-width:1080px){
     .gallery__imgContainer{
             max-width: 26vw;
+            max-height:30vh;
     }  
+    .gallery__image{
+        margin:0 0 .5em 0;
+
+    }
     }
 @media only screen and (max-width:640px){
     .margin{
         width:90%;
     }
     html{
-        font-size:14px;
+        font-size:12px;
     }
-    .gallery__section{
-        justify-content: space-evenly;
+    .marginContent{
+        font-size:15px;
     }
-    .gallery__imgContainer{
-        max-width: 38vw;
-    } 
-    
+    .gallery{
+        &__section{
+            justify-content: space-evenly;
+        }
+        &__imgContainer{
+            max-width: 38vw;
+        } 
+        &__image{
+            margin:0 0 1em 0;
+        }
+}
     .music__article{
         flex-wrap:wrap;
     
@@ -483,6 +499,7 @@ h2{
         }
 
     }
+
     .about__article{
         display:block;
     }
