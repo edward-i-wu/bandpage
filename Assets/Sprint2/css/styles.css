@@ -213,10 +213,12 @@ a {
       -ms-flex-positive: 1.6;
           flex-grow: 1.6;
   margin-left: 3em;
+  line-height: 2.15;
 }
 
 .music__article--paragraph .firstLine {
   margin-top: 0;
+  line-height: 0;
 }
 
 .gallery {

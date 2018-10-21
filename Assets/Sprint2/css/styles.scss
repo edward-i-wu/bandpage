@@ -184,9 +184,11 @@ a{
         &--paragraph{
             .firstLine{
                 margin-top:0;
+                line-height:0;
             }
             flex-grow:1.6;
             margin-left:3em;
+            line-height:2.15;
         }
     }
 
