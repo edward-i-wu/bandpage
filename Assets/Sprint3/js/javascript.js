@@ -8,7 +8,8 @@ target.appendChild(dateFinal);
 
 //<----------------------------------------------------------------------->
 //Sprint 2
-
+const apiKey = "?api_key=1069db9a-3e4f-4c22-b84a-2a095f91378a";
+const baseURL= "http://project-1-api.herokuapp.com/";
 
  
 const msInSecond = 1000; 
@@ -33,7 +34,7 @@ const timeScale = [ {key: msInYear, value:"year"},
 let comArray =[]
 
 
-let response = fetch("http://project-1-api.herokuapp.com/comments?api_key=true");
+let response = fetch(`${baseURL}comments${apiKey}`);
 
 response.then(function(servedComments){
     //creates array of comment objects
@@ -42,7 +43,7 @@ response.then(function(servedComments){
     let toBePushed;
     for(let i=0; i<parsed.length;i++){
         let item = parsed[i];
-        toBePushed = new comment(item.name,item.comment, new Date(item.timestamp), {likes: item.likes});
+        toBePushed = new comment(item.name,item.comment, new Date(item.timestamp), {likes: item.likes, id: item.id});
         comArray.push(toBePushed);
     }
     renderComments();
@@ -100,8 +101,6 @@ function submitEvent(event){
         if(form.elements[i].className === "commentSection__form--commentsInput"){
             body = value; 
         }
-        //clear the input and textarea values after submit
-        form.elements[i].value = '';
     }
     let newComment = new comment(name, body, new Date());
    let newCommentPush = {"name": name,
@@ -113,20 +112,33 @@ function submitEvent(event){
                 },
                 body:JSON.stringify(newCommentPush)
     }
-    let postResponse = fetch("http://project-1-api.herokuapp.com/comments?api_key=true",init);
+    let postResponse = fetch(`${baseURL}comments${apiKey}`,init);
     postResponse.then(response=>{
                         return response.json()}
-                    ).then(jsonData=>{
-                        console.log(jsonData);
-                    }).catch( err=>{
+                    ).then(doubleCheck).then(obj=>{
+                        if(Object.getOwnPropertyNames(obj).length>0){
+                            comArray.push(newComment);
+                            //clear dom
+                            clearComments();
+                            //re-render dom
+                            renderComments();
+                            form.reset();
+                        }
+                    }).then(console.log).catch( err=>{
                         console.log(err);
                     });
-    //add to comments array ??? no longer needed?
-    comArray.push(newComment);
-    //clear dom
-    clearComments();
-    //re-render dom
-    renderComments();
+    
+}
+
+function doubleCheck(commentObj){
+    return fetch(`${baseURL}comments${apiKey}`
+                  ).then(res=>{
+                    return res.json();
+                }).then(jsonData=>{
+                    return jsonData.find(item=>{
+                        return item.id === commentObj.id;
+                    });
+                })
 }
 
 //clear list passed by submitEvent
@@ -140,7 +152,6 @@ function renderComments(){
     let newListItem;
     let newNameChild;
     let newBodyChild;
-    console.log(comArray);
     for(let i=comArray.length-1; i>=0;i--){
         //call function that builds and displays the comment 
         displayComment(comArray[i]);
@@ -208,6 +219,7 @@ function comment(name, body, date,opts){
     this.body = body; 
     if(opts){
         this.likeNum=opts["likes"];
+        this.id = opts["id"];
     }else{
         this.likeNum=0;
     }
