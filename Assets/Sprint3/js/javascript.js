@@ -42,7 +42,7 @@ response.then(function(servedComments){
     let toBePushed;
     for(let i=0; i<parsed.length;i++){
         let item = parsed[i];
-        toBePushed = new comment(item.name,item.comment,item.likes, new Date(item.timestamp));
+        toBePushed = new comment(item.name,item.comment, new Date(item.timestamp), {likes: item.likes});
         comArray.push(toBePushed);
     }
     renderComments();
@@ -103,8 +103,25 @@ function submitEvent(event){
         //clear the input and textarea values after submit
         form.elements[i].value = '';
     }
-    let newComment = new comment(name,body, 0,new Date());
-    //add to comments array 
+    let newComment = new comment(name, body, new Date());
+   let newCommentPush = {"name": name,
+                        "comment": body};
+
+    let init = { method:"POST",
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                body:JSON.stringify(newCommentPush)
+    }
+    let postResponse = fetch("http://project-1-api.herokuapp.com/comments?api_key=true",init);
+    postResponse.then(response=>{
+                        return response.json()}
+                    ).then(jsonData=>{
+                        console.log(jsonData);
+                    }).catch( err=>{
+                        console.log(err);
+                    });
+    //add to comments array ??? no longer needed?
     comArray.push(newComment);
     //clear dom
     clearComments();
@@ -186,11 +203,16 @@ function formatDate(date){
 }
 
 //comment object 
-function comment(name, body, likeNum, date){
+function comment(name, body, date,opts){
     this.name = name;
     this.body = body; 
-    this.likeNum=likeNum;
+    if(opts){
+        this.likeNum=opts["likes"];
+    }else{
+        this.likeNum=0;
+    }
     this.date = date; 
 }
+
 
                                         
