@@ -10,6 +10,7 @@ target.appendChild(dateFinal);
 //Sprint 2
 const apiKey = "?api_key=1069db9a-3e4f-4c22-b84a-2a095f91378a";
 const baseURL= "http://project-1-api.herokuapp.com/";
+const commLink = "comments/";
 
  
 const msInSecond = 1000; 
@@ -34,7 +35,7 @@ const timeScale = [ {key: msInYear, value:"year"},
 let comArray =[]
 
 
-let response = fetch(`${baseURL}comments${apiKey}`);
+let response = fetch(`${baseURL}${commLink}${apiKey}`);
 
 response.then(function(servedComments){
     //creates array of comment objects
@@ -97,7 +98,7 @@ function submitEvent(event){
                 },
                 body:JSON.stringify(newCommentPush)
     }
-    fetch(`${baseURL}comments${apiKey}`,init
+    fetch(`${baseURL}${commLink}${apiKey}`,init
                     ).then(response=>{
                         return response.json()}
                     ).then(doubleCheck).then(obj=>{
@@ -118,7 +119,7 @@ function submitEvent(event){
 
 //function that refetches and checks the just pushed comment actually exists 
 function doubleCheck(commentObj){
-    return fetch(`${baseURL}comments${apiKey}`
+    return fetch(`${baseURL}${commLink}${apiKey}`
                   ).then(res=>{
                     return res.json();
                 }).then(jsonData=>{
@@ -166,21 +167,45 @@ function displayComment(item){
      newThumbsChild.setAttribute("data","../../Social\ Media\ Icons/svg/likeThumb.svg");
      newThumbsChild.setAttribute("style", "height:2em; width:2em");
      let putInit = { method:"PUT"};
-    newThumbsChild.addEventListener('click', ()=>{return fetch(`${baseURL}comments/${item.id}/like${apiKey}`,putInit).then(res=>{return res.json();
+    newThumbsChild.addEventListener('click', ()=>{return fetch(`${baseURL}${commLink}${item.id}/like${apiKey}`,putInit).then(res=>{return res.json();
                                                 }).then(comment=>{console.log(comment);})});
 
-     //creates text nodes
+    //!!! x close button, needs a container so hover registers
+    newXChildContainer= document.createElement('div');
+    newXChild = document.createElement('a');
+    newXChildContainer.setAttribute("class", "comment__delete");
+    newXChildContainer.appendChild(newXChild);
+    //delete call
+    let deleteInit = {method:"DELETE"};
+    newXChildContainer.addEventListener('click',()=>fetch(`${baseURL}${commLink}${item.id}${apiKey}`
+                                                        ,deleteInit).then(res=>{return res.json();
+                                                         }).then(deleted=>{
+                                                        //set comArray to array with deleted id filtered out, and re-render comments
+                                                             if(deleted.id!=undefined){
+                                                                let newArray=comArray.filter(item=>{return item.id!==deleted.id});
+                                                                comArray=newArray;
+                                                                clearComments();
+                                                                renderComments();
+                                                             }
+                                                         }));
+     
+    //creates text nodes
      let textName = document.createTextNode(item.name);
      let textBody = document.createTextNode(item.body);
      let textDate = document.createTextNode(formatDate(item.date));
+     let textX = document.createTextNode("❌");
+
 
      //append text to divs
      newNameChild.appendChild(textName);
      newBodyChild.appendChild(textBody);
      newDateChild.appendChild(textDate);
+     newXChild.appendChild(textX);
+
      //append divs to li
      newListItem.appendChild(newNameChild);
      newListItem.appendChild(newDateChild);
+     newListItem.appendChild(newXChildContainer);
      newListItem.appendChild(newBodyChild);
      newListItem.appendChild(newThumbsChild);
      //append li to live ul

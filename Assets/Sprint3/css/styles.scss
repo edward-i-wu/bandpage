@@ -264,6 +264,7 @@ a{
             border-color: $lgrey;
             border-width: 1px 0; 
             display:inline-block;
+            position:relative;
            
             &__name, &__date{
                 margin-top: 1.5em;
@@ -284,6 +285,17 @@ a{
                 // since font scaled down .75, 
                 //we have divide 1.5/.75 to get same margin as in .comment__name 
                 margin-bottom:2em;
+            }
+
+            &__delete{
+                float:right;
+            }
+            &__delete a{
+                visibility: hidden;
+            }
+
+            &__delete:hover a{
+                visibility:visible;
             }
         }
     }

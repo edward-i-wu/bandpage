@@ -326,6 +326,7 @@ a {
   border-color: #D7D7D7;
   border-width: 1px 0;
   display: inline-block;
+  position: relative;
 }
 
 .commentSectionList .comment__name, .commentSectionList .comment__date {
@@ -345,6 +346,18 @@ a {
 .commentSectionList .comment__body {
   font-size: .75em;
   margin-bottom: 2em;
+}
+
+.commentSectionList .comment__delete {
+  float: right;
+}
+
+.commentSectionList .comment__delete a {
+  visibility: hidden;
+}
+
+.commentSectionList .comment__delete:hover a {
+  visibility: visible;
 }
 
 .contact {
