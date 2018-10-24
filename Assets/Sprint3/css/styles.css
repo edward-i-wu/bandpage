@@ -366,8 +366,8 @@ a {
   background: url("../../Social Media Icons/svg/likeThumb.svg");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 1.5em;
-  width: 1.5em;
+  height: 1em;
+  width: 1em;
 }
 
 .commentSectionList .comment__thumb:hover {

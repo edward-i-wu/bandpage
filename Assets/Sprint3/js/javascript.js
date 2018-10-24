@@ -8,7 +8,7 @@ target.appendChild(dateFinal);
 
 //<----------------------------------------------------------------------->
 //Sprint 2
-const apiKey = "?api_key=1069db9a-3e4f-4c22-b84a-2a095f91378a";
+const apiKey = "?api_key=1069db9a-3e4f-4c22-b84a-2a095f91378ab";
 const baseURL= "http://project-1-api.herokuapp.com/";
 const commLink = "comments/";
 
@@ -107,9 +107,7 @@ function submitEvent(event){
                             //attach returned id to local comments array object
                             newComment.id =obj.id;
                             comArray.push(newComment);
-                            //clear dom
                             clearComments();
-                            //re-render dom
                             renderComments();
                             form.reset();
                         }
