@@ -117,7 +117,7 @@ function submitEvent(event){
     
 }
 
-//function that refetches and checks the just pushed comment actually exists 
+//function that refetches and checks the pushed comment actually exists 
 function doubleCheck(commentObj){
     return fetch(`${baseURL}${commLink}${apiKey}`
                   ).then(res=>{
@@ -162,7 +162,7 @@ function displayComment(item){
 
      newBodyChild = document.createElement('div');
      newBodyChild.setAttribute("class", "comment__body");
-    //!!!thumb
+     
      newThumbsChild=document.createElement('div');
      newThumbsChild.setAttribute("class", "comment__thumb");
      let putInit = { method:"PUT"};
@@ -187,8 +187,9 @@ function displayComment(item){
                                                              if(deleted.id!=undefined){
                                                                 let newArray=comArray.filter(item=>{return item.id!==deleted.id});
                                                                 comArray=newArray;
-                                                                clearComments();
-                                                                renderComments();
+                                                                //get containing comments list 
+                                                                let commentsContainer=document.getElementById("existingComments");
+                                                                commentsContainer.removeChild(newListItem);
                                                              }
                                                          }));
      
@@ -218,14 +219,14 @@ function displayComment(item){
      commentsUL.appendChild(newListItem);
 
      newThumbsChild.addEventListener('click', ()=>{return fetch(`${baseURL}${commLink}${item.id}/like${apiKey}`,putInit).then(res=>{return res.json();
-     }).then(comment=>{ console.log(comment);
+     }).then(comment=>{ 
          
         if(comment.likes != undefined){
             let thumbs = newThumbsCounter;
             newThumbsCounter.innerHTML = '';
             let updatedLikes = document.createTextNode(comment.likes);
             newThumbsCounter.appendChild(updatedLikes);
-            console.log(comment);
+            
          }}).catch(err =>{
              console.log(err);
          })});
