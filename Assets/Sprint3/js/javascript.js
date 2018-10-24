@@ -104,6 +104,8 @@ function submitEvent(event){
                     ).then(doubleCheck).then(obj=>{
                         //check that an object was found
                         if(obj!==undefined){
+                            //attach returned id to local comments array object
+                            newComment.id =obj.id;
                             comArray.push(newComment);
                             //clear dom
                             clearComments();
@@ -111,7 +113,7 @@ function submitEvent(event){
                             renderComments();
                             form.reset();
                         }
-                    }).then(console.log).catch( err=>{
+                    }).catch( err=>{
                         console.log(err);
                     });
     
@@ -150,6 +152,7 @@ function displayComment(item){
      let newNameChild;
      let newBodyChild;
      let newThumbsChild;
+     let newThumbsCounter;
      newListItem= document.createElement('li');
      newListItem.setAttribute("class","comment");
 
@@ -163,14 +166,16 @@ function displayComment(item){
      newBodyChild.setAttribute("class", "comment__body");
     //!!!thumb
      newThumbsChild=document.createElement('div');
-     newThumbsChild.setAttribute("type","image/svg+xml");
-     newThumbsChild.setAttribute("data","../../Social\ Media\ Icons/svg/likeThumb.svg");
-     newThumbsChild.setAttribute("style", "height:2em; width:2em");
+     newThumbsChild.setAttribute("class", "comment__thumb");
      let putInit = { method:"PUT"};
-    newThumbsChild.addEventListener('click', ()=>{return fetch(`${baseURL}${commLink}${item.id}/like${apiKey}`,putInit).then(res=>{return res.json();
-                                                }).then(comment=>{console.log(comment);})});
+    
 
-    //!!! x close button, needs a container so hover registers
+    //thumbCounter 
+    newThumbsCounter=document.createElement('div');
+    newThumbsCounter.setAttribute("class","comment__likeCounter");
+
+
+    // x close button, needs a container so hover registers
     newXChildContainer= document.createElement('div');
     newXChild = document.createElement('a');
     newXChildContainer.setAttribute("class", "comment__delete");
@@ -194,6 +199,7 @@ function displayComment(item){
      let textBody = document.createTextNode(item.body);
      let textDate = document.createTextNode(formatDate(item.date));
      let textX = document.createTextNode("❌");
+     let likeNum = document.createTextNode(item.likeNum);
 
 
      //append text to divs
@@ -201,6 +207,7 @@ function displayComment(item){
      newBodyChild.appendChild(textBody);
      newDateChild.appendChild(textDate);
      newXChild.appendChild(textX);
+     newThumbsCounter.appendChild(likeNum);
 
      //append divs to li
      newListItem.appendChild(newNameChild);
@@ -208,8 +215,22 @@ function displayComment(item){
      newListItem.appendChild(newXChildContainer);
      newListItem.appendChild(newBodyChild);
      newListItem.appendChild(newThumbsChild);
+     newListItem.appendChild(newThumbsCounter);
      //append li to live ul
      commentsUL.appendChild(newListItem);
+
+     newThumbsChild.addEventListener('click', ()=>{return fetch(`${baseURL}${commLink}${item.id}/like${apiKey}`,putInit).then(res=>{return res.json();
+     }).then(comment=>{ console.log(comment);
+         
+        if(comment.likes != undefined){
+            let thumbs = newThumbsCounter;
+            newThumbsCounter.innerHTML = '';
+            let updatedLikes = document.createTextNode(comment.likes);
+            newThumbsCounter.appendChild(updatedLikes);
+            console.log(comment);
+         }})}).catch(err =>{
+             console.log(err);
+         });
 }
 
 

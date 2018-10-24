@@ -296,6 +296,23 @@ a{
 
             &__delete:hover a{
                 visibility:visible;
+                cursor: pointer;
+            }
+            &__thumb{
+                display:inline-block;
+                background: url("../../Social\ Media\ Icons/svg/likeThumb.svg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                height:1.5em;
+                width:1.5em;
+            }
+            &__thumb:hover{
+                cursor:pointer;
+            }
+
+            &__likeCounter{
+                display:inline-block;
+                margin-left:.3em;
             }
         }
     }

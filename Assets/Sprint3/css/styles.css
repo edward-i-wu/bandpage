@@ -358,6 +358,25 @@ a {
 
 .commentSectionList .comment__delete:hover a {
   visibility: visible;
+  cursor: pointer;
+}
+
+.commentSectionList .comment__thumb {
+  display: inline-block;
+  background: url("../../Social Media Icons/svg/likeThumb.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 1.5em;
+  width: 1.5em;
+}
+
+.commentSectionList .comment__thumb:hover {
+  cursor: pointer;
+}
+
+.commentSectionList .comment__likeCounter {
+  display: inline-block;
+  margin-left: .3em;
 }
 
 .contact {
