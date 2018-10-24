@@ -161,8 +161,14 @@ function displayComment(item){
      newBodyChild = document.createElement('div');
      newBodyChild.setAttribute("class", "comment__body");
     //!!!thumb
-     newThumbsChild=document.createElement('img');
-     newThumbsChild.setAttribute("src","../../Social\ Media\ Icons/svg/likeThumb.svg")
+     newThumbsChild=document.createElement('div');
+     newThumbsChild.setAttribute("type","image/svg+xml");
+     newThumbsChild.setAttribute("data","../../Social\ Media\ Icons/svg/likeThumb.svg");
+     newThumbsChild.setAttribute("style", "height:2em; width:2em");
+     let putInit = { method:"PUT"};
+    newThumbsChild.addEventListener('click', ()=>{return fetch(`${baseURL}comments/${item.id}/like${apiKey}`,putInit).then(res=>{return res.json();
+                                                }).then(comment=>{console.log(comment);})});
+
      //creates text nodes
      let textName = document.createTextNode(item.name);
      let textBody = document.createTextNode(item.body);
