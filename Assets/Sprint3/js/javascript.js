@@ -53,24 +53,7 @@ response.then(function(servedComments){
 
 //get comments UL
 let commentsUL = document.getElementById("existingComments");
-//initial comments render
 
-
-
-// //use this specific method so old IE compatible 
-// //fill the array with current comments
-// Array.prototype.forEach.call(comments, current=>{
-//     let name= current.getElementsByClassName("comment__name")[0].innerHTML;
-//     let body = current.getElementsByClassName("comment__body")[0].innerHTML;
-//     let date = current.getElementsByClassName("comment__date")[0].innerHTML;
-//     comArray.push(new comment(name, body,date));
-// });
-
-// //reverse so we can simply push newest comments to the end
-// comArray=comArray.reverse();
-
-
-//find the form element, add event listener and stop default 
 
 let form= document.getElementById("commentform");
 let submitButton= document.getElementById("submitButton");
@@ -102,8 +85,10 @@ function submitEvent(event){
             body = value; 
         }
     }
+    //store in local array
     let newComment = new comment(name, body, new Date());
-   let newCommentPush = {"name": name,
+    //comment to be pushed to database
+    let newCommentPush = {"name": name,
                         "comment": body};
 
     let init = { method:"POST",
@@ -112,11 +97,12 @@ function submitEvent(event){
                 },
                 body:JSON.stringify(newCommentPush)
     }
-    let postResponse = fetch(`${baseURL}comments${apiKey}`,init);
-    postResponse.then(response=>{
+    fetch(`${baseURL}comments${apiKey}`,init
+                    ).then(response=>{
                         return response.json()}
                     ).then(doubleCheck).then(obj=>{
-                        if(Object.getOwnPropertyNames(obj).length>0){
+                        //check that an object was found
+                        if(obj!==undefined){
                             comArray.push(newComment);
                             //clear dom
                             clearComments();
@@ -130,6 +116,7 @@ function submitEvent(event){
     
 }
 
+//function that refetches and checks the just pushed comment actually exists 
 function doubleCheck(commentObj){
     return fetch(`${baseURL}comments${apiKey}`
                   ).then(res=>{
@@ -149,9 +136,7 @@ function clearComments(){
 }
 
 function renderComments(){
-    let newListItem;
-    let newNameChild;
-    let newBodyChild;
+  
     for(let i=comArray.length-1; i>=0;i--){
         //call function that builds and displays the comment 
         displayComment(comArray[i]);
@@ -160,6 +145,10 @@ function renderComments(){
 
 function displayComment(item){
      //create the three nodes to be added
+     let newListItem;
+     let newNameChild;
+     let newBodyChild;
+     let newThumbsChild;
      newListItem= document.createElement('li');
      newListItem.setAttribute("class","comment");
 
@@ -171,6 +160,9 @@ function displayComment(item){
 
      newBodyChild = document.createElement('div');
      newBodyChild.setAttribute("class", "comment__body");
+    //!!!thumb
+     newThumbsChild=document.createElement('img');
+     newThumbsChild.setAttribute("src","../../Social\ Media\ Icons/svg/likeThumb.svg")
      //creates text nodes
      let textName = document.createTextNode(item.name);
      let textBody = document.createTextNode(item.body);
@@ -184,6 +176,7 @@ function displayComment(item){
      newListItem.appendChild(newNameChild);
      newListItem.appendChild(newDateChild);
      newListItem.appendChild(newBodyChild);
+     newListItem.appendChild(newThumbsChild);
      //append li to live ul
      commentsUL.appendChild(newListItem);
 }
