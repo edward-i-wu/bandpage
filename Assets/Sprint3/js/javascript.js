@@ -228,9 +228,9 @@ function displayComment(item){
             let updatedLikes = document.createTextNode(comment.likes);
             newThumbsCounter.appendChild(updatedLikes);
             console.log(comment);
-         }})}).catch(err =>{
+         }}).catch(err =>{
              console.log(err);
-         });
+         })});
 }
 
 
