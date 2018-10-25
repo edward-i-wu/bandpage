@@ -44,7 +44,7 @@ response.then(function(servedComments){
     let toBePushed;
     for(let i=0; i<parsed.length;i++){
         let item = parsed[i];
-        toBePushed = new comment(item.name,item.comment, new Date(item.timestamp), {likes: item.likes, id: item.id});
+        toBePushed = new Comment(item.name,item.comment, new Date(item.timestamp), {likes: item.likes, id: item.id});
         comArray.push(toBePushed);
     }
     renderComments();
@@ -87,7 +87,7 @@ function submitEvent(event){
         }
     }
     //store in local array
-    let newComment = new comment(name, body, new Date());
+    let newComment = new Comment(name, body, new Date());
     //comment to be pushed to database
     let newCommentPush = {"name": name,
                         "comment": body};
@@ -100,7 +100,12 @@ function submitEvent(event){
     }
     fetch(`${baseURL}${commLink}${apiKey}`,init
                     ).then(response=>{
-                        return response.json()}
+                        //checks not 400 or 500 error
+                        if(response.statusText==='OK'){
+                             return response.json()
+                        }
+                            throw new Error(response);
+                        }
                     ).then(doubleCheck).then(obj=>{
                         //check that an object was found
                         if(obj!==undefined){
@@ -162,7 +167,7 @@ function displayComment(item){
 
      newBodyChild = document.createElement('div');
      newBodyChild.setAttribute("class", "comment__body");
-     
+
      newThumbsChild=document.createElement('div');
      newThumbsChild.setAttribute("class", "comment__thumb");
      let putInit = { method:"PUT"};
@@ -181,17 +186,20 @@ function displayComment(item){
     //delete call
     let deleteInit = {method:"DELETE"};
     newXChildContainer.addEventListener('click',()=>fetch(`${baseURL}${commLink}${item.id}${apiKey}`
-                                                        ,deleteInit).then(res=>{return res.json();
-                                                         }).then(deleted=>{
+                                                        ,deleteInit).then(res=>{if(res.ok){
+                                                                                return res.json();
+                                                         }else{ console.err(res);}
+                                                        }).then(deleted=>{
                                                         //set comArray to array with deleted id filtered out, and re-render comments
                                                              if(deleted.id!=undefined){
                                                                 let newArray=comArray.filter(item=>{return item.id!==deleted.id});
                                                                 comArray=newArray;
                                                                 //get containing comments list 
                                                                 let commentsContainer=document.getElementById("existingComments");
+                                                                //this works bc each loop of render comments is a new function call to displayComment, and has it's own closure 
                                                                 commentsContainer.removeChild(newListItem);
                                                              }
-                                                         }));
+                                                         }).catch(err=>{console.err(err);}));
      
     //creates text nodes
      let textName = document.createTextNode(item.name);
@@ -238,7 +246,7 @@ function formatDate(date){
         let currentDate= new Date(); 
         //difference in miliseconds 
         let diff = currentDate - date; 
-        //find the correct time scale using timeScale
+        //find the correct time scale using timeScale(a global array of objects with value of unit of time, and key the # of miliseconds in the unit)
         let timeUnit=timeScale.find(time=>{ return diff > time.key}); 
 
         //for comments less than 1 second, the key-value pair returned is {key:-1, value:"Just a moment ago"}
@@ -258,7 +266,7 @@ function formatDate(date){
 }
 
 //comment object 
-function comment(name, body, date,opts){
+function Comment(name, body, date,opts){
     this.name = name;
     this.body = body; 
     if(opts){
