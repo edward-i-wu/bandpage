@@ -391,6 +391,12 @@ a {
   background-color: #272727;
 }
 
+.contact ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
 .contact__title {
   color: #FFFFFF;
 }
@@ -414,11 +420,7 @@ a {
   margin-bottom: 1em;
 }
 
-.contact__management {
-  margin-right: 7em;
-}
-
-.contact__agentUS {
+.contact__management, .contact__agentUS {
   margin-right: 7em;
 }
 
@@ -445,7 +447,8 @@ a {
 }
 
 .showsImg {
-  background-image: url(../../Images/hanny-naibaho-388579-unsplash.png);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.3)), to(rgba(0, 0, 0, 0.3))), url(../../Images/hanny-naibaho-388579-unsplash.png);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(../../Images/hanny-naibaho-388579-unsplash.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-origin: border-box;

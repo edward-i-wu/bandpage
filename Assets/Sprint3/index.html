@@ -14,7 +14,7 @@
             <nav class="mainImg__links">
                 <a class="mainImg__link" href="">THE BEES KNEES</a>
                 <a class="mainImg__link mainImg__link--rightSide">HOME</a>
-                <a class="mainImg__link mainImg__link--rightEdge">SHOWS</a>
+                <a href="shows.html" class="mainImg__link mainImg__link--rightEdge">SHOWS</a>
             </nav>
             <div class="central">
                 <div id="mainDate" class="central__date"></div>
@@ -111,12 +111,12 @@
     <section class="commentSection">
         <div class="margin marginContent">
             <h2 class="commentSection__title"> COMMENTS</h2>
-            <form class="commentSection__form" id="commentform">
+            <form class="commentSection__form" id="commentForm">
                 <label class="commentSection__form--nameLabel">Name
-                    <input class="commentSection__form--nameInput" type="text" cols="65" required></input>
+                    <input id="nameInput" class="commentSection__form--nameInput" type="text" cols="65" required></input>
                 </label>
                 <label class="commentSection__form--nameLabel">Add a new comment
-                    <textarea class="commentSection__form--commentsInput" type="text" 
+                    <textarea id="commentInput" class="commentSection__form--commentsInput" type="text" 
                         cols="65" rows="8" wrap="hard" required></textarea>
                 </label>
                 <button id="submitButton" class="commentSection__form--inputButton" type="submit">POST COMMENT</button>
@@ -135,25 +135,26 @@
             <article class="contact__article">
                 <div class="contact__management">
                     <p class="firstLine">THE BEES KNEES MANAGEMENT</p>
-                    <p class="body">Richard Rovner <br>
-                        460 King Street West<br>
-                        Toronto, Ontario<br>
-                        M5V 1L7<br>
-                        info@thebeesknees.com</p>
+                    <ul class="body"><li>Richard Rovner</li>
+                        <li>460 King Street West</li>
+                        <li>Toronto, Ontario</li>
+                        <li>M5V 1L7</li>
+                        <li>info@thebeesknees.com</li>
+                    </ul>
                 </div>
                 <div class="contact__agentUS">
                     <p class="firstLine">US/SOUTH AMERICAN/JAPAN
                         BOOKING AGENT </p>
-                    <p class="body">Artist Group International<br>
-                        Marsha Vlasic<br>
-                        marsha.vlasic@artistgrp.com<br></p>
+                    <ul class="body"><li>Artist Group International</li>
+                        <li>Marsha Vlasic</li>
+                        <li>marsha.vlasic@artistgrp.com</li></ul>
                 </div>
                 <div class="contact__agentUK">
                     <p class="firstLine">UK/EU/AU BOOKING AGENT</p>
-                    <p class="body">William Morris Endeavor<br>
-                        Entertainment<br>
-                        Russell Warby<br>
-                        RLW@wmeentertainment.com<br></p>
+                    <ul class="body"><li>William Morris Endeavor</li>
+                        <li>Entertainment</li>
+                        <li>Russell Warby</li>
+                        <li>RLW@wmeentertainment.com</li></ul>
                 </div>
             </article>
             <div class="contact__icons">

@@ -54,9 +54,7 @@ response.then(function(servedComments){
 
 //get comments UL
 let commentsUL = document.getElementById("existingComments");
-
-
-let form= document.getElementById("commentform");
+let form = document.getElementById("commentForm");
 let submitButton= document.getElementById("submitButton");
 
 form.addEventListener(  'submit', 
@@ -69,23 +67,9 @@ form.addEventListener(  'submit',
 
 function submitEvent(event){
     //loop through info form.elements
-    let name;
-    let body;
-    let value;
-    for(let i =0; i<form.elements.length; i++){
-        //continues if not textarea input
-        if(form.elements[i].tagName.toLowerCase()!=="textarea" && form.elements[i].tagName.toLowerCase()!=="input"){
-            continue;
-        }
-        value = form.elements[i].value; 
+    let name= document.getElementById("nameInput").value;
+    let body= document.getElementById("commentInput").value;
 
-        if(form.elements[i].className === "commentSection__form--nameInput"){
-            name = value; 
-        }
-        if(form.elements[i].className === "commentSection__form--commentsInput"){
-            body = value; 
-        }
-    }
     //store in local array
     let newComment = new Comment(name, body, new Date());
     //comment to be pushed to database
