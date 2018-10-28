@@ -46,7 +46,7 @@ response.then(function(servedComments){
     let toBePushed;
     for(let i=0; i<parsed.length;i++){
         let item = parsed[i];
-        toBePushed = new Comment(item.name,item.comment, new Date(item.timestamp), {likes: item.likes, id: item.id});
+        toBePushed = {name:item.name, body:item.comment, date: new Date(item.timestamp), likeNum: item.likes, id: item.id};
         comArray.push(toBePushed);
     }
     renderComments();
@@ -73,7 +73,7 @@ function submitEvent(event){
     let body= document.getElementById("commentInput").value;
 
     //for storage in local array
-    let newComment = new Comment(name, body, new Date());
+    let newComment = {"name":name, "body":body, "date":new Date(), "likeNum":0};
     //for pushing to server
     let newCommentPush = {"name": name,
                         "comment": body};
@@ -262,18 +262,4 @@ function formatDate(date){
  
 }
 
-//comment object 
-function Comment(name, body, date,opts){
-    this.name = name;
-    this.body = body; 
-    if(opts){
-        this.likeNum=opts["likes"];
-        this.id = opts["id"];
-    }else{
-        this.likeNum=0;
-    }
-    this.date = date; 
-}
-
-
-                                        
+                      
