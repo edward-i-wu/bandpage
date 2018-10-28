@@ -8,9 +8,7 @@ target.appendChild(dateFinal);
 
 //<----------------------------------------------------------------------->
 //Sprint 2
-const apiKey = "?api_key=1069db9a-3e4f-4c22-b84a-2a095f91378ab";
-const baseURL= "http://project-1-api.herokuapp.com/";
-const commLink = "comments/";
+
 
  
 const msInSecond = 1000; 
@@ -23,7 +21,6 @@ const msInYear = msInDay*365;
 //array of objects to use Array.find() on 
 //to find appropriate time-scale in terms of miliseconds
 const timeScale = [ {key: msInYear, value:"year"},
-                    {key: msInMonth, value: "month"},
                     {key: msInDay, value: "day"},
                     {key: msInHour, value: "hour"},
                     {key: msInMinute, value: "minute"},
@@ -31,7 +28,12 @@ const timeScale = [ {key: msInYear, value:"year"},
                     {key: -1, value:"Just a moment ago"}
                 ];
 
-//initialize comments array 
+//mostly Sprint 3
+
+const apiKey = "?api_key=1069db9a-3e4f-4c22-b84a-2a095f91378ab";
+const baseURL= "http://project-1-api.herokuapp.com/";
+const commLink = "comments/";
+const likesLink= "like/";
 let comArray =[]
 
 
@@ -52,7 +54,7 @@ response.then(function(servedComments){
 
 
 
-//get comments UL
+//get comments UL, form and button
 let commentsUL = document.getElementById("existingComments");
 let form = document.getElementById("commentForm");
 let submitButton= document.getElementById("submitButton");
@@ -70,9 +72,9 @@ function submitEvent(event){
     let name= document.getElementById("nameInput").value;
     let body= document.getElementById("commentInput").value;
 
-    //store in local array
+    //for storage in local array
     let newComment = new Comment(name, body, new Date());
-    //comment to be pushed to database
+    //for pushing to server
     let newCommentPush = {"name": name,
                         "comment": body};
 
@@ -96,6 +98,7 @@ function submitEvent(event){
                             //attach returned id to local comments array object
                             newComment.id =obj.id;
                             comArray.push(newComment);
+                            //clear and re render
                             clearComments();
                             renderComments();
                             form.reset();
@@ -106,7 +109,7 @@ function submitEvent(event){
     
 }
 
-//function that refetches and checks the pushed comment actually exists 
+//function that refetches and checks the pushed comment actually exists by comparing IDs, returns the comment if found, undefined otherwise  
 function doubleCheck(commentObj){
     return fetch(`${baseURL}${commLink}${apiKey}`
                   ).then(res=>{
@@ -122,19 +125,19 @@ function doubleCheck(commentObj){
 function clearComments(){
     for(let i=commentsUL.childNodes.length-1; i>=0; i--){
          commentsUL.removeChild(commentsUL.childNodes[i]);
-        } 
+    } 
 }
 
 function renderComments(){
   
     for(let i=comArray.length-1; i>=0;i--){
-        //call function that builds and displays the comment 
+        //call function that builds and displays each comment 
         displayComment(comArray[i]);
     }
 }
 
 function displayComment(item){
-     //create the three nodes to be added
+     //create the new nodes to be added
      let newListItem;
      let newNameChild;
      let newBodyChild;
@@ -210,14 +213,24 @@ function displayComment(item){
      //append li to live ul
      commentsUL.appendChild(newListItem);
 
-     newThumbsChild.addEventListener('click', ()=>{return fetch(`${baseURL}${commLink}${item.id}/like${apiKey}`,putInit).then(res=>{return res.json();
+     newThumbsChild.addEventListener('click', ()=>{return fetch(`${baseURL}${commLink}${item.id}/${likesLink}${apiKey}`,putInit).then(response=>{
+         
+        if(response.statusText==='OK'){
+            return response.json()
+       }
+           throw new Error(response);
+       
      }).then(comment=>{ 
          
         if(comment.likes != undefined){
+            //update dom
             let thumbs = newThumbsCounter;
             newThumbsCounter.innerHTML = '';
             let updatedLikes = document.createTextNode(comment.likes);
             newThumbsCounter.appendChild(updatedLikes);
+
+            //update local comments array
+            comArray.find(item=>{ return item.id===comment.id}).likeNum+=1; 
             
          }}).catch(err =>{
              console.log(err);

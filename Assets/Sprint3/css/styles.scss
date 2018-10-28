@@ -140,8 +140,7 @@ a{
 
 .music{
     @include sectionFormatting;
-    background-color:$offwhite;
-    //add bottom padding to offset the absolutely positioned player 
+    background-color:$offwhite; 
     padding-bottom: 5%; 
  
     &__player{
@@ -326,7 +325,7 @@ a{
     @include sectionFormatting;
     background-color:$dgrey;
     
-    //to get work with li instead of br
+    //to get to work with li instead of br
     ul{
         list-style: none;
         padding-left:0;
